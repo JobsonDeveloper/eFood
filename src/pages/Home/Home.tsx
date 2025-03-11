@@ -1,5 +1,11 @@
+import ListaRestaurantes from "../../containers/ListaRestaurantes/ListaRestaurantes"
+
 const Home = () => {
-  return <h1>Home</h1>
+  return (
+    <div className="content">
+      <ListaRestaurantes/>
+    </div>
+  )
 }
 
 export default Home
