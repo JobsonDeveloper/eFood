@@ -8,15 +8,15 @@ const GlobalStyle = createGlobalStyle`
         list-style: none;
         font-family: Roboto, sans-serif;
     }
+
+    .container {
+      width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+    }
 `
 
 export default GlobalStyle
-
-export const Container = styled.article`
-  width: 100%;
-  max-width: 1024px;
-  margin: 0 auto;
-`
 
 export const colors = {
   pink: '#E66767',
@@ -24,3 +24,8 @@ export const colors = {
   white: '#FFFFFF',
   whiteTow: '#FFF8F2'
 }
+
+export const LogoComp = styled.img`
+  width: 125px;
+  height: 58px;
+`
