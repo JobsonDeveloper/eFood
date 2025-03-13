@@ -1,9 +1,6 @@
 import { Link, useLocation } from 'react-router'
 import {
   HeaderComp,
-  HeroComp,
-  HeroDataComp,
-  HeroRestaurantComp,
   ListComp,
   TitleComp
 } from './Styles'
@@ -34,28 +31,16 @@ const Header = () => {
         </li>
 
         {!pagePath && (
-          <button className="links">{carrinho.length} produto(s) no carrinho</button>
+          <button className="links">
+            {carrinho.length} produto(s) no carrinho
+          </button>
         )}
       </ListComp>
-
-      <HeroComp>
-        {pagePath ? (
-          <TitleComp className="container">
-            Viva experiências gastronômicas <br /> no conforto da sua casa
-          </TitleComp>
-        ) : (
-          <HeroRestaurantComp
-            style={{ backgroundImage: `url(${ImageBackgroundRestaurante})` }}
-          >
-            <HeroDataComp>
-              <div className="container">
-                <p className="typeOfFood">Italiana</p>
-                <p className="restaurantName">La Dolce Vita Trattoria</p>
-              </div>
-            </HeroDataComp>
-          </HeroRestaurantComp>
-        )}
-      </HeroComp>
+      {pagePath && (
+        <TitleComp className="container">
+          Viva experiências gastronômicas no conforto da sua casa
+        </TitleComp>
+      )}
     </HeaderComp>
   )
 }

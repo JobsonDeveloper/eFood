@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router'
+import { BrowserRouter, useLocation } from 'react-router'
 import Rotas from './Routes'
 import GlobalStyle from './Styles'
 import Header from './containers/Header/Header'

@@ -54,7 +54,7 @@ export const TitleComp = styled.h4<TextsProps>`
   color: ${(props) => (props.color === 'white' ? colors.white : colors.pink)};
 `
 
-export const TextComp = styled.h4<TextsProps>`
+export const TextComp = styled.p<TextsProps>`
   font-weight: 400px;
   font-size: ${(props) => (props.lineHeight ? props.lineHeight + 'px' : 'normal')};
   font-size: ${(props) => (props.fontSize ? props.fontSize + 'px' : '14px')};

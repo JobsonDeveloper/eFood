@@ -1,9 +1,21 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ListaComp = styled.ul`
-    display: grid;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 80px 0 120px 0;
+  column-gap: 80px;
+  row-gap: 48px;
+  justify-items: center;
+
+  @media (max-width: 630px) {
+    grid-template-columns: 1fr;
+    padding: 40px 5px 60px 5px;
+  }
+
+  @media (max-width: 992px) {
     grid-template-columns: 1fr 1fr;
-    padding: 80px 0 120px 0;
-    column-gap: 80px;
-    row-gap: 48px;
+    column-gap: 10px;
+    row-gap: 12px;
+  }
 `

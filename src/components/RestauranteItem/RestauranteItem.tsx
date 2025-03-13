@@ -2,6 +2,9 @@ import { Link } from 'react-router'
 import ImgStars from '../../assets/icons/estrela.png'
 import { ButtonComp, CardDataComp, HeaderCardComp, ImagemComp, ItemComp, StarsComp, TagsComp } from './Styles'
 import { DestaqueComp, TextComp, TitleComp } from '../../Styles'
+import { useDispatch } from 'react-redux'
+import { RootReducer } from '../../store/store'
+import { adicionar } from '../../store/reducers/RestaurantSelected'
 
 type Props = {
   id: number
@@ -10,6 +13,7 @@ type Props = {
   image: string
   stars: number
   description: string
+  type: string
 }
 
 const RestauranteItem = ({
@@ -18,8 +22,21 @@ const RestauranteItem = ({
   tags,
   image,
   stars,
-  description
+  description,
+  type
 }: Props) => {
+  const dispatch = useDispatch()
+
+  const setRestaurantSelected = () => {
+    dispatch(adicionar(
+      {
+        restaurantName: name,
+        restaurantImage: image,
+        restaurantType: type
+      }
+    ))
+  }
+
   return (
     <ItemComp>
       <ImagemComp src={image} alt="Imagem do restaurante" />
@@ -40,7 +57,7 @@ const RestauranteItem = ({
 
         <TextComp>{description}</TextComp>
 
-        <ButtonComp to="/">Saiba mais</ButtonComp>
+        <ButtonComp to="/restaurante" onClick={setRestaurantSelected}>Saiba mais</ButtonComp>
       </CardDataComp>
     </ItemComp>
   )

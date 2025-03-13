@@ -1,9 +1,13 @@
 import styled from 'styled-components'
-import { colors, DestaqueComp } from '../../Styles'
+import { colors } from '../../Styles'
 import { Link } from 'react-router'
 
 export const ItemComp = styled.li`
   position: relative;
+
+  @media (max-width: 992px) {
+    width: 310px;
+  }
 `
 
 export const ImagemComp = styled.img`
@@ -11,6 +15,11 @@ export const ImagemComp = styled.img`
   height: 217px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 992px) {
+    width: 310px;
+    height: 142px;
+  }
 `
 
 export const TagsComp = styled.div`
@@ -45,11 +54,11 @@ export const StarsComp = styled.span`
 `
 
 export const ButtonComp = styled(Link)`
-    background-color: ${colors.pink};
-    color: ${colors.white};
-    font-weight: 700;
-    font-size: 14px;
-    padding: 6px 4px;
-    text-decoration: none;
-    display: inline-block;
+  background-color: ${colors.pink};
+  color: ${colors.white};
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px 4px;
+  text-decoration: none;
+  display: inline-block;
 `

@@ -1,4 +1,4 @@
-import { FooterComp } from './Styles'
+import { FooterComp, SocialLinksComp } from './Styles'
 import Logo from '../../assets/icons/logo.png'
 import ImageInstagram from '../../assets/icons/instagram.png'
 import ImageFacebook from '../../assets/icons/facebook.png'
@@ -10,7 +10,7 @@ const Footer = () => {
     <FooterComp>
       <LogoComp src={Logo} alt="Logo" />
 
-      <ul>
+      <SocialLinksComp>
         <li>
           <img src={ImageInstagram} alt="Instagram" />
         </li>
@@ -20,11 +20,11 @@ const Footer = () => {
         <li>
           <img src={ImageTwitter} alt="Twitter" />
         </li>
-      </ul>
+      </SocialLinksComp>
 
       <TextComp fontSize={10}>
         A efood é uma plataforma para divulgação de estabelecimentos, a
-        responsabilidade pela entrega, qualidade dos produtos é toda do
+        responsabilidade pela entrega, qualidade <br /> dos produtos é toda do
         estabelecimento contratado.
       </TextComp>
     </FooterComp>
