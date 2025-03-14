@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <HeaderComp style={{ backgroundImage: `url(${ImageBackgroundBase})` }}>
       <ListComp className="container">
-        <LinksItem>
+        <LinksItem className='linkRestaurante'>
           {!pagePath && (
             <Link to="/" className="links">
               Restaurantes
@@ -31,14 +31,14 @@ const Header = () => {
           )}
         </LinksItem>
 
-        <LogoItem>
+        <LogoItem className='logo'>
           <Link to="/">
             <LogoComp src={Logo} alt="Logo da eFood" />
           </Link>
         </LogoItem>
 
         {!pagePath && (
-          <CartItem className="links" onClick={() => dispatch(changeShow(true))}>
+          <CartItem className="links carrinho" onClick={() => dispatch(changeShow(true))}>
             {carrinho.length} produto(s) no carrinho
           </CartItem>
         )}

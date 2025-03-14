@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store/store'
 import {
   ButtonCardapioComp,
@@ -10,6 +10,7 @@ import {
 } from '../../Styles'
 import { Dispatch, FormEvent, SetStateAction, useEffect, useState } from 'react'
 import { InputCartaoComp, InputCvvComp } from './Styles'
+import { changeShow } from '../../store/reducers/Carrinho'
 
 type Props = {
   setShow: Dispatch<SetStateAction<string>>
@@ -23,6 +24,7 @@ const PaymentForm = ({ setShow }: Props) => {
   const [year, setYear] = useState(0)
   const { itens } = useSelector((state: RootReducer) => state.carrinho)
   const [valorTotal, setValorTotal] = useState('')
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (itens.length === 0) {
@@ -39,17 +41,10 @@ const PaymentForm = ({ setShow }: Props) => {
   const finishRequest = (ev: FormEvent) => {
     ev.preventDefault()
 
-    if(
-        (name === '') ||
-        (number === 0) ||
-        (cvv === 0) ||
-        (month === 0) ||
-        (year === 0)
-    ) {
-        alert("Verifique se todos os campos foram preenchidos!")
-    }
-    else {
-        setShow('finish')
+    if (name === '' || number === 0 || cvv === 0 || month === 0 || year === 0) {
+      alert('Verifique se todos os campos foram preenchidos!')
+    } else {
+      setShow('finish')
     }
   }
 
@@ -117,6 +112,12 @@ const PaymentForm = ({ setShow }: Props) => {
         </ButtonCardapioComp>
         <ButtonCardapioComp type="button" onClick={() => setShow('delivery')}>
           Voltar para a edição de endereço
+        </ButtonCardapioComp>
+        <ButtonCardapioComp
+          className="btnCloseAside"
+          onClick={() => dispatch(changeShow(false))}
+        >
+          voltar
         </ButtonCardapioComp>
       </SidebarContainerButtonsComp>
     </SidebarFormComp>

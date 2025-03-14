@@ -1,17 +1,19 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { CarrinhoDescriptionComp, CarrinhoList, CartTotalValue } from './Styles'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store/store'
-import { ButtonCardapioComp } from '../../Styles'
+import { ButtonCardapioComp, SideBarTitleComp } from '../../Styles'
 import CarrinhoItem from '../../components/CarrinhoItem/CarrinhoItem'
+import { changeShow } from '../../store/reducers/Carrinho'
 
 type Props = {
-    setShow: Dispatch<SetStateAction<string>>
+  setShow: Dispatch<SetStateAction<string>>
 }
 
 const CartList = ({ setShow }: Props) => {
   const { itens } = useSelector((state: RootReducer) => state.carrinho)
   const [valorTotal, setValorTotal] = useState('')
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (itens.length === 0) {
@@ -26,16 +28,16 @@ const CartList = ({ setShow }: Props) => {
   }, [itens])
 
   const makePayment = () => {
-    if(itens.length > 0) {
-        setShow('delivery')
-    }
-    else {
-        alert("Nenhum produto foi adicionado ao carrinho!")
+    if (itens.length > 0) {
+      setShow('delivery')
+    } else {
+      alert('Nenhum produto foi adicionado ao carrinho!')
     }
   }
 
   return (
     <>
+      <SideBarTitleComp>Carrinho</SideBarTitleComp>
       <CarrinhoList>
         {itens.length != 0 ? (
           itens.map((produto) => (
@@ -59,7 +61,12 @@ const CartList = ({ setShow }: Props) => {
         <p>R$ {valorTotal.replace('.', ',')}</p>
       </CartTotalValue>
 
-      <ButtonCardapioComp onClick={makePayment}>Continuar com a entrega</ButtonCardapioComp>
+      <ButtonCardapioComp onClick={makePayment}>
+        Continuar com a entrega
+      </ButtonCardapioComp>
+      <ButtonCardapioComp className='btnCloseAside' onClick={() => dispatch(changeShow(false))}>
+        voltar
+      </ButtonCardapioComp>
     </>
   )
 }

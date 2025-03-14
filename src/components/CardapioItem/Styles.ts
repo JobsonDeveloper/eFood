@@ -3,6 +3,7 @@ import { colors, TextComp, TitleComp } from '../../Styles'
 
 export const CardapioItemComp = styled.li`
   background-color: ${colors.pink};
+  width: 320px;
   padding: 8px;
 
   ${TitleComp} {
@@ -15,6 +16,6 @@ export const CardapioItemComp = styled.li`
 `
 
 export const ImageCardapioComp = styled.img`
-  width: 304;
+  width: 304px;
   height: 167px;
 `

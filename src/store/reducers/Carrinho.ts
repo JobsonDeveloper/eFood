@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import Produto from '../../model/Produto'
 
 type CarrinhoState = {
-  itens: Produto[],
+  itens: Produto[]
   show: boolean
 }
 
@@ -27,13 +27,15 @@ const carrinhoSlice = createSlice({
       state.itens.push(novoProduto)
     },
     remover: (state, action: PayloadAction<Produto>) => {
-      if(state.itens.length === 1) {
+      if (state.itens.length === 1) {
         state.itens = []
-      }
-      else {  
+      } else {
         const list = state.itens.filter((item) => item.id != action.payload.id)
         state.itens = list
       }
+    },
+    esvaziar: (state) => {
+      state.itens = []
     },
     changeShow: (state, action: PayloadAction<boolean>) => {
       state.show = action.payload
@@ -41,5 +43,5 @@ const carrinhoSlice = createSlice({
   }
 })
 
-export const { adicionar, remover, changeShow } = carrinhoSlice.actions
+export const { adicionar, remover, changeShow, esvaziar } = carrinhoSlice.actions
 export default carrinhoSlice.reducer

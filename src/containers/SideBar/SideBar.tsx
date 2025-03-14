@@ -10,11 +10,11 @@ import { useState } from 'react'
 import CartList from '../CartList/CartList'
 import DeliveryForm from '../DeliveryForm/DeliveryForm'
 import PaymentForm from '../PaymentForm/PaymentForm'
+import PurchaseCompleted from '../PurchaseCompleted/PurchaseCompleted'
 
 const SideBar = () => {
   const dispatch = useDispatch()
   const [show, setShow] = useState('payment')
-
   const ShowContent = () => {
     switch (show) {
       case 'list':
@@ -27,7 +27,7 @@ const SideBar = () => {
         return <PaymentForm setShow={setShow}/>
         break
       default:
-        return <>finish</>
+        return <PurchaseCompleted setShow={setShow}/>
         break
     }
   }

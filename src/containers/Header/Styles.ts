@@ -24,6 +24,30 @@ export const ListComp = styled.ul`
     outline: none;
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: none;
+    grid-template-areas: 
+    "logo"
+    "link"
+    "carrinho";
+    row-gap: 36px;
+
+    .linkRestaurante {
+      grid-area: link;
+      text-align: center;
+      width: 100%;
+    }
+
+    .logo {
+      grid-area: logo;
+    }
+
+    .carrinho {
+      grid-area: carrinho;
+      text-align: center;
+    }
+  }
 `
 
 export const TitleComp = styled.h1`

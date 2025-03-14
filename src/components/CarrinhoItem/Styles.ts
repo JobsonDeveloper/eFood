@@ -6,6 +6,10 @@ export const CarrinhoItemComp = styled.li`
   padding: 8px;
   background-color: ${colors.lightPink};
   width: 344px;
+
+  @media (max-width: 576px) {
+    width: 300px;
+  }
 `
 
 export const CarrinhoImage = styled.div`

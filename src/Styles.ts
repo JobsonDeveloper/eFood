@@ -26,6 +26,14 @@ const GlobalStyle = createGlobalStyle`
   .content {
     background-color: ${colors.whiteTow};
   }
+
+  .btnCloseAside {
+    margin-top: 8px;
+
+    @media (min-width: 576px) {
+      display: none;
+    }
+  }
 `
 
 export default GlobalStyle

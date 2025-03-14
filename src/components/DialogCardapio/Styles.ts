@@ -19,7 +19,18 @@ export const DialogDataComp = styled.article`
   position: relative;
   display: flex;
   width: 1024px;
+  max-height: 100vh;
   column-gap: 24px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    margin: 0 10px;
+    width: max-content;
+  }
+
+  @media (max-width: 576px) {
+    padding: 25px;
+  }
 `
 
 export const CloseComp = styled.img`
@@ -29,6 +40,7 @@ export const CloseComp = styled.img`
   width: 16px;
   height: 16px;
   cursor: pointer;
+  background-color: ${colors.pink};
 `
 
 export const DishImageComp = styled.div`
@@ -37,17 +49,31 @@ export const DishImageComp = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 576px) {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 8px;
+  }
 `
 
 export const DialogInfos = styled.div`
   ${TitleComp} {
     max-width: 656px;
     margin: 0 0 16px;
+
+    @media (max-width: 1024px) {
+      width: 250px;
+    }
   }
 
   ${TextComp} {
     max-width: 656px;
     margin: 0;
+
+    @media (max-width: 1024px) {
+      width: 250px;
+    }
   }
 
   .emphasis {
@@ -65,7 +91,7 @@ export const ButtonAddCarrinho = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-  
+
   &:hover {
     background-color: ${colors.whiteTow};
   }

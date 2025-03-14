@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { colors } from "../../Styles";
+import styled from 'styled-components'
+import { colors } from '../../Styles'
 
 export const CarrinhoList = styled.ul`
   display: grid;
@@ -16,6 +16,10 @@ export const CartTotalValue = styled.div`
     font-weight: 700;
     font-size: 14px;
     color: ${colors.lightPink};
+  }
+
+  @media (max-width: 576px) {
+    width: 300px;
   }
 `
 

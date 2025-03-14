@@ -1,19 +1,54 @@
 import { Dispatch, SetStateAction } from 'react'
-import { ButtonCardapioComp, SidebarFormComp, SideBarTitleComp } from '../../Styles'
+import {
+  ButtonCardapioComp,
+  SidebarFormComp,
+  SideBarTitleComp
+} from '../../Styles'
+import { TextComp } from './Styles'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeShow, esvaziar } from '../../store/reducers/Carrinho'
+import { RootReducer } from '../../store/store'
 
 type Props = {
   setShow: Dispatch<SetStateAction<string>>
 }
 
 const PurchaseCompleted = ({ setShow }: Props) => {
+  const dispatch = useDispatch()
+  let order = Math.random() * 20000;
+  order = Math.floor(order + 1);
+
+  const purchaseCompleted = () => {
+    dispatch(esvaziar())
+    setShow('list')
+  }
+
   return (
     <SidebarFormComp>
-      <SideBarTitleComp>Pedido realizado - ORDER_ID</SideBarTitleComp>
+      <SideBarTitleComp>Pedido realizado - {order}</SideBarTitleComp>
 
-      <p></p>
+      <TextComp>
+        Estamos felizes em informar que seu pedido já está em processo de
+        preparação e, em breve, será entregue no endereço fornecido.
+      </TextComp>
 
-      <ButtonCardapioComp type="button" onClick={() => setShow('list')}>
-        Continuar com o pagamento
+      <TextComp>
+        Gostaríamos de ressaltar que nossos entregadores não estão autorizados a
+        realizar cobranças extras.
+      </TextComp>
+
+      <TextComp>
+        Lembre-se da importância de higienizar as mãos após o recebimento do
+        pedido, garantindo assim sua segurança e bem-estar durante a refeição.{' '}
+      </TextComp>
+
+      <TextComp>
+        Esperamos que desfrute de uma deliciosa e agradável experiência
+        gastronômica. Bom apetite! <br />
+      </TextComp>
+
+      <ButtonCardapioComp type="button" onClick={purchaseCompleted}>
+        Concluir
       </ButtonCardapioComp>
     </SidebarFormComp>
   )
