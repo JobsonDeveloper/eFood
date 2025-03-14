@@ -79,3 +79,50 @@ export const ButtonCardapioComp = styled.button`
     background-color: ${colors.whiteTow};
   }
 `
+
+export const SideBarTitleComp = styled.h4`
+  font-size: 16px;
+  color: ${colors.lightPink};
+  font-weight: 700;
+  margin-bottom: 16px;
+`
+
+export const SideBarLabelComp = styled.label`
+  font-size: 14px;
+  color: ${colors.lightPink};
+  font-weight: 700;
+  margin: 8px 0;
+`
+
+export const SidebarContainerButtonsComp = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding-top: 24px;
+    row-gap: 8px;
+`
+
+export const SidebarInputsComp = styled.input`
+  width: 100%;
+  background-color: ${colors.lightPink};
+  outline: none;
+  color: #4B4B4B;
+  padding: 8px;
+  border: none;
+  font-size: 700;
+  font-size: 14px;
+`
+
+export const SidebarFormComp = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  ul {
+    display: flex;
+    column-gap: 34px;
+
+    li {
+        display: flex;
+        flex-direction: column;
+    }
+  }
+`

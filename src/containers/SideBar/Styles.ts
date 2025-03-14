@@ -38,12 +38,6 @@ export const TitleComp = styled.h3`
   width: 100%;
   text-align: center;
   margin: 8px 0 24px;
-
-`
-
-export const CarrinhoList = styled.ul`
-  display: grid;
-  row-gap: 16px;
 `
 
 export const AreaCloseSideBarComp = styled.div`
@@ -51,26 +45,4 @@ export const AreaCloseSideBarComp = styled.div`
   width: 100%;
   height: 100vh;
   cursor: pointer;
-`
-
-export const CartTotalValue = styled.div`
-  width: 344px;
-  display: flex;
-  justify-content: space-between;
-  margin: 40px 0 16px;
-
-  p {
-    font-weight: 700;
-    font-size: 14px;
-    color: ${colors.lightPink};
-  }
-`
-
-export const CarrinhoDescriptionComp = styled.p`
-  font-weight: 400;
-  font-size: 18px;
-  color: ${colors.lightPink};
-  width: 100%;
-  text-align: center;
-  margin: 8px 0;
 `
