@@ -4,7 +4,8 @@ export const colors = {
   pink: '#E66767',
   lightPink: '#FFEBD9',
   white: '#FFFFFF',
-  whiteTow: '#FFF8F2'
+  whiteTow: '#FFF8F2',
+  shadow: 'rgba(0, 0, 0, 0.69)'
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -46,18 +47,35 @@ type TextsProps = {
   color?: string
   fontSize?: number
   lineHeight?: string
+  fontWeight?: string
 }
 
 export const TitleComp = styled.h4<TextsProps>`
-  font-weight: 700px;
+  font-weight: ${(props) => (props.fontWeight ? props.fontWeight : 'normal')};
   font-size: ${(props) => (props.fontSize ? props.fontSize + 'px' : '18px')};
-  color: ${(props) => (props.color === 'white' ? colors.white : colors.pink)};
+  color: ${(props) => (props.color === 'lightPink' ? colors.lightPink : colors.pink)};
 `
 
 export const TextComp = styled.p<TextsProps>`
   font-weight: 400px;
-  font-size: ${(props) => (props.lineHeight ? props.lineHeight + 'px' : 'normal')};
+  line-height: ${(props) => (props.lineHeight ? props.lineHeight + 'px' : 'normal')};
   font-size: ${(props) => (props.fontSize ? props.fontSize + 'px' : '14px')};
   margin: 16px 0;
-  color: ${(props) => (props.color === 'white' ? colors.white : colors.pink)};
+  color: ${(props) => (props.color === 'lightPink' ? colors.lightPink : colors.pink)};
+`
+
+export const ButtonCardapioComp = styled.button`
+  width: 100%;
+  color: ${colors.pink};
+  background-color: ${colors.lightPink};
+  font-weight: 700;
+  font-size: 14px;
+  padding: 4px 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${colors.whiteTow};
+  }
 `

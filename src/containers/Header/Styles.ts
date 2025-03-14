@@ -1,4 +1,3 @@
-import { Link } from 'react-router'
 import styled from 'styled-components'
 import { colors } from '../../Styles'
 
@@ -14,11 +13,6 @@ export const ListComp = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   padding: 64px 0;
   align-items: center;
-
-  li {
-    display: flex;
-    justify-content: center;
-  }
 
   .links {
     color: ${colors.pink};
@@ -43,4 +37,17 @@ export const TitleComp = styled.h1`
   margin-bottom: 40px;
   max-width: 539px;
   height: 174px;
+`
+
+export const LinksItem = styled.li`
+  justify-content: left;
+`
+
+export const CartItem = styled.li`
+  text-align: end;
+`
+
+export const LogoItem = styled.li`
+  display: flex;
+  justify-content: center;
 `
