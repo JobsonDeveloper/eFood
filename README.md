@@ -4,7 +4,7 @@
 [![My Skills](https://skillicons.dev/icons?i=vite,html,ts,react,redux,styledcomponents,figma,git,vercel)](https://skillicons.dev)
 
 ### Lista completa:
-Vite | HTML | TypeScript | React | Redux | React Hooks | React Router | Styled-components | Prettier | ESLint | Editor Config | Figma | Git | Vercel | POO - Programação Orientada a Objetos
+Vite | HTML | TypeScript | React | Redux | React Hooks | React Router | Styled-components | Prettier | ESLint | Figma | Git | Vercel | POO - Programação Orientada a Objetos
 
 Site de divulgação de restaurantes, bem como seus cardápios, possibilitando também uma estrutura para a implementação da compra de produtos através do site.
 Todo o gerenciamento de estado dos dados utilizados globalmente estão sendo gerenciados através do Redux, os estados dos componentes locais são gerenciados pelo useState.
