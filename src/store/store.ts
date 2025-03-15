@@ -3,13 +3,15 @@ import carrinhoSlice from './reducers/Carrinho'
 import RestaurantSelectedSlice from './reducers/RestaurantSelected'
 import SelectedDishSlice from './reducers/SelectedDish'
 import changeShow from './reducers/Carrinho'
+import LoadingSlice from './reducers/Loading'
 
 const store = configureStore({
   reducer: {
     carrinho: carrinhoSlice,
     restaurantSelected: RestaurantSelectedSlice,
     SelectedDishSlice: SelectedDishSlice,
-    showSidebar: changeShow
+    showSidebar: changeShow,
+    loading: LoadingSlice
   }
 })
 
