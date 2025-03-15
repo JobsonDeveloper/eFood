@@ -10,7 +10,6 @@ import {
 import Logo from '../../assets/icons/logo.png'
 import { LogoComp } from '../../Styles'
 import ImageBackgroundBase from '../../assets/images/fundoRosa.svg'
-import ImageBackgroundRestaurante from '../../assets/images/macaronada.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store/store'
 import { changeShow } from '../../store/reducers/Carrinho'

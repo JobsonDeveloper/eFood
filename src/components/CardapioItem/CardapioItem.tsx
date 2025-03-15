@@ -16,7 +16,6 @@ type Props = {
 }
 
 const CardapioItem = ({
-  id,
   image: imageDish,
   name: nameDish,
   emphasis: emphesisDish,

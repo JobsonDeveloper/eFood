@@ -5,9 +5,8 @@ import {
   SideBarTitleComp
 } from '../../Styles'
 import { TextComp } from './Styles'
-import { useDispatch, useSelector } from 'react-redux'
-import { changeShow, esvaziar } from '../../store/reducers/Carrinho'
-import { RootReducer } from '../../store/store'
+import { useDispatch } from 'react-redux'
+import { esvaziar } from '../../store/reducers/Carrinho'
 
 type Props = {
   setShow: Dispatch<SetStateAction<string>>

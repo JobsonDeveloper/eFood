@@ -34,6 +34,14 @@ export const CardDataComp = styled.article`
   padding: 8px;
   border: 1px solid ${colors.pink};
   border-top: none;
+
+  .descricao {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /** número de linhas que você quer exibir */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `
 
 export const HeaderCardComp = styled.div`

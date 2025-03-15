@@ -1,5 +1,7 @@
 import ImageHiokiSushi from '../../assets/images/sushi.svg'
 import ImageLaDolceVitaTrattoria from '../../assets/images/macaronada.svg'
+import ImageBrasileirou from '../../assets/images/feijoada.webp'
+import ImageSaborDoAmor from '../../assets/images/saborDoAmor.jpg'
 import RestauranteItem from '../../components/RestauranteItem/RestauranteItem'
 import { ListaComp } from './Styles'
 
@@ -26,43 +28,23 @@ const restaurantes = [
   },
   {
     id: 3,
-    name: 'La Dolce Vita Trattoria',
-    tags: ['Italiana'],
-    image: ImageLaDolceVitaTrattoria,
-    stars: 4.6,
+    name: 'Restaurante Brasileirou',
+    tags: ['Brasileira'],
+    image: ImageBrasileirou,
+    stars: 5,
     description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    type: 'Italiana'
+      'Descubra o verdadeiro gosto do Brasil no Restaurante Sabor do Brasil, um espaço acolhedor e vibrante que celebra a rica diversidade da culinária brasileira. Localizado no coração da cidade, nosso restaurante é um convite a uma viagem gastronômica pelos sabores e aromas que fazem do Brasil um país único.',
+    type: 'Brasileira'
   },
   {
     id: 4,
-    name: 'La Dolce Vita Trattoria',
-    tags: ['Italiana'],
-    image: ImageLaDolceVitaTrattoria,
-    stars: 4.6,
+    name: 'Sabor do amor',
+    tags: ['Brasileira'],
+    image: ImageSaborDoAmor,
+    stars: 4.3,
     description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    type: 'Italiana'
-  },
-  {
-    id: 5,
-    name: 'La Dolce Vita Trattoria',
-    tags: ['Italiana'],
-    image: ImageLaDolceVitaTrattoria,
-    stars: 4.6,
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    type: 'Italiana'
-  },
-  {
-    id: 6,
-    name: 'La Dolce Vita Trattoria',
-    tags: ['Italiana'],
-    image: ImageLaDolceVitaTrattoria,
-    stars: 4.6,
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    type: 'Italiana'
+      'Onde cada prato é preparado com carinho e dedicação, trazendo o aconchego das refeições caseiras. Aqui, você encontra uma seleção de comidas simples e deliciosas, que aquecem o coração e alimentam a alma.',
+    type: 'Brasileira'
   }
 ]
 

@@ -3,7 +3,6 @@ import {
   AreaCloseSideBarComp,
   AsideContainerComp,
   SideBarComp,
-  TitleComp
 } from './Styles'
 import { changeShow } from '../../store/reducers/Carrinho'
 import { useState } from 'react'
@@ -14,7 +13,7 @@ import PurchaseCompleted from '../PurchaseCompleted/PurchaseCompleted'
 
 const SideBar = () => {
   const dispatch = useDispatch()
-  const [show, setShow] = useState('payment')
+  const [show, setShow] = useState('list')
   const ShowContent = () => {
     switch (show) {
       case 'list':
