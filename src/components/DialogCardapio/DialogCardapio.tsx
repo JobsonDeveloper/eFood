@@ -9,7 +9,7 @@ import {
   DishImageComp
 } from './Styles'
 import IconClose from '../../assets/icons/close.png'
-import { TextComp, TitleComp } from '../../Styles'
+import { TextDescription, TitleComp } from '../../Styles'
 import { adicionar, changeShow } from '../../store/reducers/Carrinho'
 
 type Props = {
@@ -54,13 +54,13 @@ const DialogCardapio = ({setShowDish}: Props) => {
             {dishName}
           </TitleComp>
 
-          <TextComp color="lightPink" lineHeight="22">
+          <TextDescription color="lightPink">
             {description}
-          </TextComp>
+          </TextDescription>
 
-          <TextComp color="lightPink" lineHeight="22" className='emphasis'>
+          <TextDescription color="lightPink" className='emphasis'>
             {emphasis}
-          </TextComp>
+          </TextDescription>
 
           <ButtonAddCarrinho onClick={AddCart}>Adicionar ao carrinho - R$ {showValue}</ButtonAddCarrinho>
         </DialogInfos>

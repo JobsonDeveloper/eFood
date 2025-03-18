@@ -13,7 +13,7 @@ export const CardapioItemComp = styled.li`
   ${TextComp} {
     margin: 8px 0;
     display: -webkit-box;
-    -webkit-line-clamp: 4; /** número de linhas que você quer exibir */
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;

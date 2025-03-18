@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type SelectedDishProps = {
+  id: number
   name: string
   image: string
   description: string
@@ -9,6 +10,7 @@ type SelectedDishProps = {
 }
 
 const initialState: SelectedDishProps = {
+  id: -1,
   name: '',
   image: '',
   description: '',

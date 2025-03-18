@@ -1,54 +1,45 @@
 import { useState } from 'react'
-import { ButtonCardapioComp, TextComp, TitleComp } from '../../Styles'
+import { ButtonCardapioComp, TextDescription, TitleComp } from '../../Styles'
 import { CardapioItemComp, ImageCardapioComp } from './Styles'
 import DialogCardapio from '../DialogCardapio/DialogCardapio'
 import { useDispatch } from 'react-redux'
 import { adicionar } from '../../store/reducers/SelectedDish'
+import Cardapio from '../../model/Cardapio'
 
 type Props = {
-  id: number
-  image: string
-  name: string
-  description: string
-  details: string
-  emphasis: string
-  value: number
+  cardapio: Cardapio
 }
 
-const CardapioItem = ({
-  image: imageDish,
-  name: nameDish,
-  emphasis: emphesisDish,
-  value: valueDish,
-  description: descriptionDish,
-  details
-}: Props) => {
+const CardapioItem = ({ cardapio }: Props) => {
+  const { id, foto, nome, descricao, porcao, preco } = cardapio
   const [showDish, setShowDish] = useState(false)
   const dispatch = useDispatch()
 
   const setDataDish = () => {
     dispatch(
       adicionar({
-        name: nameDish,
-        description: details,
-        emphasis: emphesisDish,
-        image: imageDish,
-        value: valueDish
+        id,
+        name: nome,
+        description: descricao,
+        emphasis: porcao,
+        image: foto,
+        value: preco
       })
     )
 
     setShowDish(true)
   }
 
+
   return (
     <CardapioItemComp>
-      <ImageCardapioComp src={imageDish} alt="" />
+      <ImageCardapioComp src={foto} alt="" />
       <TitleComp color="lightPink" fontWeight="900">
-        {nameDish}
+        {nome}
       </TitleComp>
-      <TextComp color="lightPink" lineHeight="22">
-        {descriptionDish}
-      </TextComp>
+      <TextDescription color="lightPink">
+        {descricao}
+      </TextDescription>
       <ButtonCardapioComp onClick={setDataDish}>Adicionar ao carrinho</ButtonCardapioComp>
 
       {showDish && <DialogCardapio setShowDish={setShowDish} />}

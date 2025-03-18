@@ -5,7 +5,7 @@ type Props = {
 }
 
 const initialState: Props = {
-    value: false
+    value: true
 }
 
 const LoadingSlice = createSlice({

@@ -1,27 +1,26 @@
 class Cardapio {
   id: number
-  image: string
-  name: string
-  emphasis: string
-  description: string
-  details: string
-  value: number
+  nome: string
+  foto: string
+  descricao: string
+  porcao: string
+  preco: number
 
-  constructor(id: number,
-    image: string,
-    name: string,
-    emphasis: string,
-    description: string,
-    details: string,
-    value: number) {
-        this.id = id
-        this.image = image
-        this.name = name
-        this.emphasis = emphasis
-        this.description = description
-        this.details = details
-        this.value = value
-    }
+  constructor(
+    id: number,
+    nome: string,
+    foto: string,
+    descricao: string,
+    porcao: string,
+    preco: number
+  ) {
+    this.id = id
+    this.nome = nome
+    this.foto = foto
+    this.descricao = descricao
+    this.porcao = porcao
+    this.preco = preco
+  }
 }
 
 export default Cardapio

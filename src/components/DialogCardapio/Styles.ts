@@ -64,6 +64,7 @@ export const DialogInfos = styled.div`
 
     @media (max-width: 1024px) {
       width: 250px;
+      margin-top: 8px;
     }
   }
 

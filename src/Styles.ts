@@ -135,3 +135,7 @@ export const SidebarFormComp = styled.form`
     }
   }
 `
+
+export const TextDescription = styled(TextComp)`
+  line-height: 22px;
+`

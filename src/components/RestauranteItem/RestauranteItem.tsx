@@ -1,60 +1,37 @@
 import ImgStars from '../../assets/icons/estrela.png'
 import { ButtonComp, CardDataComp, HeaderCardComp, ImagemComp, ItemComp, StarsComp, TagsComp } from './Styles'
 import { DestaqueComp, TextComp, TitleComp } from '../../Styles'
-import { useDispatch } from 'react-redux'
-import { adicionar } from '../../store/reducers/RestaurantSelected'
+import Restautante from '../../model/Restaurante'
 
-type Props = {
-  id: number
-  name: string
-  tags: Array<string>
-  image: string
-  stars: number
-  description: string
-  type: string
+type RestauranteProps = {
+  restaurante: Restautante
 }
 
-const RestauranteItem = ({
-  name,
-  tags,
-  image,
-  stars,
-  description,
-  type
-}: Props) => {
-  const dispatch = useDispatch()
-
-  const setRestaurantSelected = () => {
-    dispatch(adicionar(
-      {
-        restaurantName: name,
-        restaurantImage: image,
-        restaurantType: type
-      }
-    ))
-  }
+const RestauranteItem = ({ restaurante }: RestauranteProps) => {
+  const { id, avaliacao, capa, descricao, destacado, titulo, tipo } = restaurante
 
   return (
     <ItemComp>
-      <ImagemComp src={image} alt="Imagem do restaurante" />
+      <ImagemComp src={capa} alt="Imagem do restaurante" />
 
       <TagsComp>
-        {tags.map((item, key) => (
-          <DestaqueComp key={key}>{item}</DestaqueComp>
-        ))}
+        {destacado === true && 
+          <DestaqueComp>Destaque da semana</DestaqueComp>
+        }        
+        <DestaqueComp>{tipo}</DestaqueComp>
       </TagsComp>
 
       <CardDataComp>
         <HeaderCardComp>
-          <TitleComp>{name}</TitleComp>
+          <TitleComp>{titulo}</TitleComp>
           <StarsComp>
-            <TitleComp>{stars}</TitleComp> <img src={ImgStars} alt="Estrela" />
+            <TitleComp>{avaliacao}</TitleComp> <img src={ImgStars} alt="Estrela" />
           </StarsComp>
         </HeaderCardComp>
 
-        <TextComp className='descricao'>{description}</TextComp>
+        <TextComp className='descricao'>{descricao}</TextComp>
 
-        <ButtonComp to="/restaurante" onClick={setRestaurantSelected}>Saiba mais</ButtonComp>
+        <ButtonComp to={`/restaurante/${id}`}>Saiba mais</ButtonComp>
       </CardDataComp>
     </ItemComp>
   )

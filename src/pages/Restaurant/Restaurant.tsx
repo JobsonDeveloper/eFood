@@ -5,18 +5,34 @@ import SideBar from '../../containers/SideBar/SideBar'
 import { RootReducer } from '../../store/store'
 import { useEffect } from 'react'
 import { showLoading } from '../../store/reducers/Loading'
+import { useParams } from 'react-router'
+import { adicionar } from '../../store/reducers/RestaurantSelected'
 
 const Restaurant = () => {
+  const { item } = useSelector((state: RootReducer) => state.restaurante)
   const { show } = useSelector((state: RootReducer) => state.carrinho)
   const dispatch = useDispatch()
+  const { id } = useParams()
 
-  // Apenas para simular um loading
   useEffect(() => {
     dispatch(showLoading(true))
     setTimeout(() => {
       dispatch(showLoading(false))
-    }, 1000);
-  },[])
+    }, 1000)
+
+    item.map((data) => {
+      if (id) {
+        if (data.id == parseInt(id)) {
+          dispatch(adicionar({
+            restaurantName: data.titulo,
+            restaurantType: data.tipo,
+            restaurantImage: data.capa,
+            cardapio: data.cardapio
+          }))
+        }
+      }
+    })
+  }, [])
 
   return (
     <>

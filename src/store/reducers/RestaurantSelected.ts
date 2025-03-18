@@ -1,15 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import Cardapio from "../../model/Cardapio";
 
 type RestaurantSelectedProps = {
     restaurantName: string
     restaurantType: string,
     restaurantImage: string
+    cardapio: Cardapio[]
 }
 
-const initialState: RestaurantSelectedProps = {
+const dados = sessionStorage.getItem('restaurant')
+
+let initialState: RestaurantSelectedProps = {
     restaurantName: '',
     restaurantType: '',
-    restaurantImage: ''
+    restaurantImage: '',
+    cardapio: []
+}
+
+if(dados) {
+    initialState = JSON.parse(dados)
 }
 
 const RestaurantSelectedSlice = createSlice({
@@ -20,6 +29,7 @@ const RestaurantSelectedSlice = createSlice({
             state.restaurantImage = action.payload.restaurantImage
             state.restaurantName = action.payload.restaurantName
             state.restaurantType = action.payload.restaurantType
+            state.cardapio = action.payload.cardapio
 
             sessionStorage.setItem('restaurant', JSON.stringify(state))
         }
