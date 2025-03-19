@@ -11,6 +11,7 @@ import {
 import IconClose from '../../assets/icons/close.png'
 import { TextDescription, TitleComp } from '../../Styles'
 import { adicionar, changeShow } from '../../store/reducers/Carrinho'
+import { formataPreco } from '../../utils/utils'
 
 type Props = {
   setShowDish: React.Dispatch<React.SetStateAction<boolean>>
@@ -21,7 +22,7 @@ const DialogCardapio = ({setShowDish}: Props) => {
     (state: RootReducer) => state.SelectedDishSlice
   )
   const dispatch = useDispatch()
-  const valueDishString = `${dishValue.toFixed(2)}`
+  const valueDishString = `${formataPreco(dishValue)}`
   const showValue = valueDishString.replace(".",',')
 
   const AddCart = () => {
@@ -62,7 +63,7 @@ const DialogCardapio = ({setShowDish}: Props) => {
             {emphasis}
           </TextDescription>
 
-          <ButtonAddCarrinho onClick={AddCart}>Adicionar ao carrinho - R$ {showValue}</ButtonAddCarrinho>
+          <ButtonAddCarrinho onClick={AddCart}>Adicionar ao carrinho - {showValue}</ButtonAddCarrinho>
         </DialogInfos>
       </DialogDataComp>
     </DialogComp>

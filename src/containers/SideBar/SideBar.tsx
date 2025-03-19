@@ -14,6 +14,7 @@ import PurchaseCompleted from '../PurchaseCompleted/PurchaseCompleted'
 const SideBar = () => {
   const dispatch = useDispatch()
   const [show, setShow] = useState('list')
+  
   const ShowContent = () => {
     switch (show) {
       case 'list':

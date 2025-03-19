@@ -5,6 +5,7 @@ import { RootReducer } from '../../store/store'
 import { ButtonCardapioComp, SideBarTitleComp } from '../../Styles'
 import CarrinhoItem from '../../components/CarrinhoItem/CarrinhoItem'
 import { changeShow } from '../../store/reducers/Carrinho'
+import { formataPreco } from '../../utils/utils'
 
 type Props = {
   setShow: Dispatch<SetStateAction<string>>
@@ -15,15 +16,18 @@ const CartList = ({ setShow }: Props) => {
   const [valorTotal, setValorTotal] = useState('')
   const dispatch = useDispatch()
 
+  const getTotalPrice = () => {
+    return itens.reduce((cumulator, currentValue) => {
+      return (cumulator += currentValue.value)
+    }, 0)
+  }
+
   useEffect(() => {
     if (itens.length === 0) {
       setValorTotal('0,00')
     } else {
-      let valor = 0
-      itens.map((item) => {
-        valor += item.value
-        setValorTotal(`${valor.toFixed(2)}`)
-      })
+      const valorCalculado = `${formataPreco(getTotalPrice())}`
+      setValorTotal(valorCalculado.replace('.', ','))
     }
   }, [itens])
 
@@ -58,13 +62,16 @@ const CartList = ({ setShow }: Props) => {
 
       <CartTotalValue>
         <p>Valor total</p>
-        <p>R$ {valorTotal.replace('.', ',')}</p>
+        <p>{valorTotal.replace('.', ',')}</p>
       </CartTotalValue>
 
       <ButtonCardapioComp onClick={makePayment}>
         Continuar com a entrega
       </ButtonCardapioComp>
-      <ButtonCardapioComp className='btnCloseAside' onClick={() => dispatch(changeShow(false))}>
+      <ButtonCardapioComp
+        className="btnCloseAside"
+        onClick={() => dispatch(changeShow(false))}
+      >
         voltar
       </ButtonCardapioComp>
     </>
