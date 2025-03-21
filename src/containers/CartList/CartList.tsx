@@ -53,6 +53,7 @@ const CartList = ({ setShow }: Props) => {
               name={produto.name}
               image={produto.image}
               value={produto.value}
+              delay={produto.id * 100}
             />
           ))
         ) : (

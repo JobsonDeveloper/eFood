@@ -1,6 +1,9 @@
 import Restautante from '../../model/Restaurant'
 import ImgStars from '../../assets/icons/estrela.png'
+import { useEffect } from 'react'
+import AOS from 'aos'
 
+import 'aos/dist/aos.css'
 import { EmphasisComp, TextComp, TitleComp } from '../../Styles'
 import * as S from './Styles'
 
@@ -8,16 +11,19 @@ type RestaurantProps = {
   restaurant: Restautante
 }
 
+
 const RestaurantItem = ({ restaurant }: RestaurantProps) => {
   const { id, avaliacao, capa, descricao, destacado, titulo, tipo } = restaurant
 
+  useEffect(() => {
+    AOS.init()
+  }, [])
+  
   return (
-    <S.ItemComp>
-      <S.TagsComp>
+    <S.ItemComp data-aos="zoom-in">
       <S.ImageComp src={capa} alt="Imagem do restaurante" />
-        {destacado === true && 
-          <EmphasisComp>Destaque da semana</EmphasisComp>
-        }        
+      <S.TagsComp>
+        {destacado === true && <EmphasisComp>Destaque da semana</EmphasisComp>}
         <EmphasisComp>{tipo}</EmphasisComp>
       </S.TagsComp>
 
@@ -25,11 +31,12 @@ const RestaurantItem = ({ restaurant }: RestaurantProps) => {
         <S.HeaderCardComp>
           <TitleComp>{titulo}</TitleComp>
           <S.StarsComp>
-            <TitleComp>{avaliacao}</TitleComp> <img src={ImgStars} alt="Estrela" />
+            <TitleComp>{avaliacao}</TitleComp>{' '}
+            <img src={ImgStars} alt="Estrela" />
           </S.StarsComp>
         </S.HeaderCardComp>
 
-        <TextComp className='descricao'>{descricao}</TextComp>
+        <TextComp className="descricao">{descricao}</TextComp>
 
         <S.ButtonComp to={`/restaurante/${id}`}>Saiba mais</S.ButtonComp>
       </S.CardDataComp>

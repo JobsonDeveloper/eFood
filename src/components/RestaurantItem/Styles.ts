@@ -17,6 +17,7 @@ export const ImageComp = styled.img`
   height: 217px;
   display: flex;
   flex-direction: column;
+  object-fit: cover;
 
   @media (max-width: 992px) {
     width: 310px;
@@ -36,6 +37,8 @@ export const CardDataComp = styled.article`
   padding: 8px;
   border: 1px solid ${colors.pink};
   border-top: none;
+  display: flex;
+  flex-direction: column;
 
   .descricao {
     display: -webkit-box;
@@ -71,4 +74,5 @@ export const ButtonComp = styled(Link)`
   padding: 6px 4px;
   text-decoration: none;
   display: inline-block;
+  width: 82px;
 `
