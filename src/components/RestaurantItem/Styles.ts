@@ -1,6 +1,8 @@
-import styled from 'styled-components'
-import { colors } from '../../Styles'
 import { Link } from 'react-router'
+
+import styled from 'styled-components'
+
+import { colors } from '../../Styles'
 
 export const ItemComp = styled.li`
   position: relative;
@@ -10,7 +12,7 @@ export const ItemComp = styled.li`
   }
 `
 
-export const ImagemComp = styled.img`
+export const ImageComp = styled.img`
   width: 472px;
   height: 217px;
   display: flex;

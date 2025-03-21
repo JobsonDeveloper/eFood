@@ -1,38 +1,40 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { CarrinhoDescriptionComp, CarrinhoList, CartTotalValue } from './Styles'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { RootReducer } from '../../store/store'
-import { ButtonCardapioComp, SideBarTitleComp } from '../../Styles'
-import CarrinhoItem from '../../components/CarrinhoItem/CarrinhoItem'
-import { changeShow } from '../../store/reducers/Carrinho'
-import { formataPreco } from '../../utils/utils'
+import CartItem from '../../components/CartItem/CartItem'
+import { changeShow } from '../../store/reducers/Cart'
+import { formatPrice } from '../../utils/utils'
+
+import { ButtonMenuComp, SideBarTitleComp } from '../../Styles'
+import * as S from './Styles'
 
 type Props = {
   setShow: Dispatch<SetStateAction<string>>
 }
 
 const CartList = ({ setShow }: Props) => {
-  const { itens } = useSelector((state: RootReducer) => state.carrinho)
-  const [valorTotal, setValorTotal] = useState('')
+  const { items } = useSelector((state: RootReducer) => state.cart)
+  const [allValue, setAllValue] = useState('')
   const dispatch = useDispatch()
 
   const getTotalPrice = () => {
-    return itens.reduce((cumulator, currentValue) => {
-      return (cumulator += currentValue.value)
+    return items.reduce((accumulator, currentValue) => {
+      return (accumulator += currentValue.value)
     }, 0)
   }
 
   useEffect(() => {
-    if (itens.length === 0) {
-      setValorTotal('0,00')
+    if (items.length === 0) {
+      setAllValue('0,00')
     } else {
-      const valorCalculado = `${formataPreco(getTotalPrice())}`
-      setValorTotal(valorCalculado.replace('.', ','))
+      const calculatedValue = `${formatPrice(getTotalPrice())}`
+      setAllValue(calculatedValue.replace('.', ','))
     }
-  }, [itens])
+  }, [items])
 
   const makePayment = () => {
-    if (itens.length > 0) {
+    if (items.length > 0) {
       setShow('delivery')
     } else {
       alert('Nenhum produto foi adicionado ao carrinho!')
@@ -42,10 +44,10 @@ const CartList = ({ setShow }: Props) => {
   return (
     <>
       <SideBarTitleComp>Carrinho</SideBarTitleComp>
-      <CarrinhoList>
-        {itens.length != 0 ? (
-          itens.map((produto) => (
-            <CarrinhoItem
+      <S.CartListComp>
+        {items.length != 0 ? (
+          items.map((produto) => (
+            <CartItem
               key={produto.id}
               id={produto.id}
               name={produto.name}
@@ -54,26 +56,29 @@ const CartList = ({ setShow }: Props) => {
             />
           ))
         ) : (
-          <CarrinhoDescriptionComp>
-            Sem itens no carrinho
-          </CarrinhoDescriptionComp>
+          <S.CartDescriptionComp>Sem items no carrinho</S.CartDescriptionComp>
         )}
-      </CarrinhoList>
+      </S.CartListComp>
 
-      <CartTotalValue>
-        <p>Valor total</p>
-        <p>{valorTotal.replace('.', ',')}</p>
-      </CartTotalValue>
+      {items.length > 0 && (
+        <>
+          <S.CartTotalValueComp>
+            <p>Valor total</p>
+            <p>{allValue.replace('.', ',')}</p>
+          </S.CartTotalValueComp>
 
-      <ButtonCardapioComp onClick={makePayment}>
-        Continuar com a entrega
-      </ButtonCardapioComp>
-      <ButtonCardapioComp
+          <ButtonMenuComp onClick={makePayment}>
+            Continuar com a entrega
+          </ButtonMenuComp>
+        </>
+      )}
+      <ButtonMenuComp
         className="btnCloseAside"
+        type="button"
         onClick={() => dispatch(changeShow(false))}
       >
         voltar
-      </ButtonCardapioComp>
+      </ButtonMenuComp>
     </>
   )
 }

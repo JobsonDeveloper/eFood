@@ -1,4 +1,4 @@
-class Cardapio {
+class Menu {
   id: number
   nome: string
   foto: string
@@ -23,4 +23,4 @@ class Cardapio {
   }
 }
 
-export default Cardapio
+export default Menu

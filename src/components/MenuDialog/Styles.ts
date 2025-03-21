@@ -57,7 +57,7 @@ export const DishImageComp = styled.div`
   }
 `
 
-export const DialogInfos = styled.div`
+export const DialogInfosComp = styled.div`
   ${TitleComp} {
     max-width: 656px;
     margin: 0 0 16px;
@@ -83,7 +83,7 @@ export const DialogInfos = styled.div`
   }
 `
 
-export const ButtonAddCarrinho = styled.button`
+export const ButtonAddCartComp = styled.button`
   background-color: ${colors.lightPink};
   font-weight: 700;
   font-size: 14px;

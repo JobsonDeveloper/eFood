@@ -1,16 +1,17 @@
+import { useParams } from 'react-router'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import Hero from '../../components/Hero/Hero'
-import ListaCardapio from '../../containers/ListaCardapio/ListaCardapio'
+import MenuList from '../../containers/MenuList/MenuList'
 import SideBar from '../../containers/SideBar/SideBar'
 import { RootReducer } from '../../store/store'
-import { useEffect } from 'react'
 import { showLoading } from '../../store/reducers/Loading'
-import { useParams } from 'react-router'
-import { adicionar } from '../../store/reducers/RestaurantSelected'
+import { add } from '../../store/reducers/RestaurantSelected'
 
 const Restaurant = () => {
-  const { item } = useSelector((state: RootReducer) => state.restaurante)
-  const { show } = useSelector((state: RootReducer) => state.carrinho)
+  const { item } = useSelector((state: RootReducer) => state.restaurant)
+  const { show } = useSelector((state: RootReducer) => state.cart)
   const dispatch = useDispatch()
   const { id } = useParams()
 
@@ -23,11 +24,11 @@ const Restaurant = () => {
     item.map((data) => {
       if (id) {
         if (data.id == parseInt(id)) {
-          dispatch(adicionar({
+          dispatch(add({
             restaurantName: data.titulo,
             restaurantType: data.tipo,
             restaurantImage: data.capa,
-            cardapio: data.cardapio
+            menu: data.cardapio
           }))
         }
       }
@@ -37,7 +38,7 @@ const Restaurant = () => {
   return (
     <>
       <Hero />
-      <ListaCardapio />
+      <MenuList />
       {show && <SideBar />}
     </>
   )

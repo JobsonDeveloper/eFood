@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux'
-import { LoadingComp, LoadingContainerComp } from './Styles'
+
 import { RootReducer } from '../../store/store'
+
+import * as S from './Styles'
 
 const Loading = () => {
   const { value } = useSelector((state: RootReducer) => state.loading)
@@ -8,13 +10,13 @@ const Loading = () => {
   return (
     <>
       {value === true && (
-        <LoadingContainerComp>
-          <LoadingComp>
+        <S.LoadingContainerComp>
+          <S.LoadingComp>
             <li></li>
             <li></li>
             <li></li>
-          </LoadingComp>
-        </LoadingContainerComp>
+          </S.LoadingComp>
+        </S.LoadingContainerComp>
       )}
     </>
   )

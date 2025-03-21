@@ -1,4 +1,4 @@
-class Produto {
+class Product {
   id: number
   name: string
   value: number
@@ -12,4 +12,4 @@ class Produto {
   }
 }
 
-export default Produto
+export default Product

@@ -1,12 +1,14 @@
+import { useDispatch } from 'react-redux'
 import { Dispatch, SetStateAction } from 'react'
+
+import { clear } from '../../store/reducers/Cart'
+
 import {
-  ButtonCardapioComp,
-  SidebarFormComp,
+  ButtonMenuComp,
+  SideBarFormComp,
   SideBarTitleComp
 } from '../../Styles'
 import { TextComp } from './Styles'
-import { useDispatch } from 'react-redux'
-import { esvaziar } from '../../store/reducers/Carrinho'
 
 type Props = {
   setShow: Dispatch<SetStateAction<string>>
@@ -18,12 +20,12 @@ const PurchaseCompleted = ({ setShow }: Props) => {
   order = Math.floor(order + 1);
 
   const purchaseCompleted = () => {
-    dispatch(esvaziar())
+    dispatch(clear())
     setShow('list')
   }
 
   return (
-    <SidebarFormComp>
+    <SideBarFormComp>
       <SideBarTitleComp>Pedido realizado - {order}</SideBarTitleComp>
 
       <TextComp>
@@ -46,10 +48,10 @@ const PurchaseCompleted = ({ setShow }: Props) => {
         gastronômica. Bom apetite! <br />
       </TextComp>
 
-      <ButtonCardapioComp type="button" onClick={purchaseCompleted}>
+      <ButtonMenuComp type="button" onClick={purchaseCompleted}>
         Concluir
-      </ButtonCardapioComp>
-    </SidebarFormComp>
+      </ButtonMenuComp>
+    </SideBarFormComp>
   )
 }
 

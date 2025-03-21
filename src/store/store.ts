@@ -1,20 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit'
-import carrinhoSlice from './reducers/Carrinho'
+
+import cartSlice from './reducers/Cart'
 import RestaurantSelectedSlice from './reducers/RestaurantSelected'
 import SelectedDishSlice from './reducers/SelectedDish'
-import changeShow from './reducers/Carrinho'
+import changeShow from './reducers/Cart'
 import LoadingSlice from './reducers/Loading'
-import RestauranteSlice from './reducers/Restaurante'
+import RestaurantSlice from './reducers/Restaurant'
 import Api from '../services/Api'
 
 const store = configureStore({
   reducer: {
-    carrinho: carrinhoSlice,
+    cart: cartSlice,
     restaurantSelected: RestaurantSelectedSlice,
     SelectedDishSlice: SelectedDishSlice,
     showSidebar: changeShow,
     loading: LoadingSlice,
-    restaurante: RestauranteSlice,
+    restaurant: RestaurantSlice,
     [Api.reducerPath]: Api.reducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(Api.middleware)

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { colors } from '../../Styles'
 
-export const CarrinhoItemComp = styled.li`
+export const CartItemComp = styled.li`
   display: flex;
   padding: 8px;
   background-color: ${colors.lightPink};
@@ -12,7 +12,7 @@ export const CarrinhoItemComp = styled.li`
   }
 `
 
-export const CarrinhoImage = styled.div`
+export const CartImageComp = styled.div`
   width: 80px;
   height: 80px;
   background-repeat: no-repeat;
@@ -20,7 +20,7 @@ export const CarrinhoImage = styled.div`
   background-size: cover;
 `
 
-export const CarrinhoDataComp = styled.div`
+export const CartDataComp = styled.div`
   margin-left: 8px;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@ export const CarrinhoDataComp = styled.div`
   flex-grow: 1;
 `
 
-export const ProdutoValueComp = styled.p`
+export const ProductValueComp = styled.p`
   color: ${colors.pink};
   font-weight: 400;
   font-size: 14px;

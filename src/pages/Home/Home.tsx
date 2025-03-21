@@ -1,24 +1,25 @@
 import { useEffect } from 'react'
-import ListaRestaurantes from '../../containers/ListaRestaurantes/ListaRestaurantes'
-import { useGetRestaurantesQuery } from '../../services/Api'
 import { useDispatch } from 'react-redux'
+
+import RestaurantList from '../../containers/RestaurantList/RestaurantList'
+import { useGetRestaurantsQuery } from '../../services/Api'
 import { showLoading } from '../../store/reducers/Loading'
-import { atualizar } from '../../store/reducers/Restaurante'
+import { update } from '../../store/reducers/Restaurant'
 
 const Home = () => {
-  const { data, isLoading } = useGetRestaurantesQuery()
+  const { data, isLoading } = useGetRestaurantsQuery()
   const dispatch = useDispatch()
 
   useEffect(() => {
     if(data) {
-      dispatch(atualizar(data))
+      dispatch(update(data))
       dispatch(showLoading(false))
     }
   }, [isLoading])
 
   return (
     <div className="content">
-      <ListaRestaurantes />
+      <RestaurantList />
     </div>
   )
 }

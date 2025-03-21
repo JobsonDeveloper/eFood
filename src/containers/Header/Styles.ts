@@ -63,15 +63,15 @@ export const TitleComp = styled.h1`
   height: 174px;
 `
 
-export const LinksItem = styled.li`
+export const LinksItemComp = styled.li`
   justify-content: left;
 `
 
-export const CartItem = styled.li`
+export const CartItemComp = styled.li`
   text-align: end;
 `
 
-export const LogoItem = styled.li`
+export const LogoItemComp = styled.li`
   display: flex;
   justify-content: center;
 `

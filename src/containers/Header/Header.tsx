@@ -1,53 +1,48 @@
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router'
-import {
-  CartItem,
-  HeaderComp,
-  LinksItem,
-  ListComp,
-  LogoItem,
-  TitleComp
-} from './Styles'
+
+import { RootReducer } from '../../store/store'
+import { changeShow } from '../../store/reducers/Cart'
 import Logo from '../../assets/icons/logo.png'
 import { LogoComp } from '../../Styles'
 import ImageBackgroundBase from '../../assets/images/fundoRosa.svg'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store/store'
-import { changeShow } from '../../store/reducers/Carrinho'
+
+import * as S from './Styles'
 
 const Header = () => {
-  const pagePath = useLocation().pathname === '/' ? true : false
-  const carrinho = useSelector((state: RootReducer) => state.carrinho.itens)
+  const pagePath = useLocation().pathname === '/' ? true : false  
+  const cart = useSelector((state: RootReducer) => state.cart.items)
   const dispatch = useDispatch()
 
   return (
-    <HeaderComp style={{ backgroundImage: `url(${ImageBackgroundBase})` }}>
-      <ListComp className="container">
-        <LinksItem className='linkRestaurante'>
+    <S.HeaderComp style={{ backgroundImage: `url(${ImageBackgroundBase})` }}>
+      <S.ListComp className="container">
+        <S.LinksItemComp className='linkRestaurante'>
           {!pagePath && (
             <Link to="/" className="links">
               Restaurantes
             </Link>
           )}
-        </LinksItem>
+        </S.LinksItemComp>
 
-        <LogoItem className='logo'>
+        <S.LogoItemComp className='logo'>
           <Link to="/">
             <LogoComp src={Logo} alt="Logo da eFood" />
           </Link>
-        </LogoItem>
+        </S.LogoItemComp>
 
         {!pagePath && (
-          <CartItem className="links carrinho" onClick={() => dispatch(changeShow(true))}>
-            {carrinho.length} produto(s) no carrinho
-          </CartItem>
+          <S.CartItemComp className="links carrinho" onClick={() => dispatch(changeShow(true))}>
+            {cart.length} produto(s) no carrinho
+          </S.CartItemComp>
         )}
-      </ListComp>
+      </S.ListComp>
       {pagePath && (
-        <TitleComp className="container">
+        <S.TitleComp className="container">
           Viva experiências gastronômicas no conforto da sua casa
-        </TitleComp>
+        </S.TitleComp>
       )}
-    </HeaderComp>
+    </S.HeaderComp>
   )
 }
 

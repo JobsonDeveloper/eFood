@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { colors } from '../../Styles'
 
-export const CarrinhoList = styled.ul`
+export const CartListComp = styled.ul`
   display: grid;
   row-gap: 16px;
 `
 
-export const CartTotalValue = styled.div`
+export const CartTotalValueComp = styled.div`
   width: 344px;
   display: flex;
   justify-content: space-between;
@@ -23,7 +23,7 @@ export const CartTotalValue = styled.div`
   }
 `
 
-export const CarrinhoDescriptionComp = styled.p`
+export const CartDescriptionComp = styled.p`
   font-weight: 400;
   font-size: 18px;
   color: ${colors.lightPink};

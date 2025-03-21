@@ -43,7 +43,7 @@ export const LogoComp = styled.img`
   height: 58px;
 `
 
-export const DestaqueComp = styled.span`
+export const EmphasisComp = styled.span`
   background-color: ${colors.pink};
   color: ${colors.white};
   font-weight: 700;
@@ -61,19 +61,21 @@ type TextsProps = {
 export const TitleComp = styled.h4<TextsProps>`
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : 'normal')};
   font-size: ${(props) => (props.fontSize ? props.fontSize + 'px' : '18px')};
-  color: ${(props) => (props.color === 'lightPink' ? colors.lightPink : colors.pink)};
+  color: ${(props) =>
+    props.color === 'lightPink' ? colors.lightPink : colors.pink};
 `
-
 
 export const TextComp = styled.p<TextsProps>`
   font-weight: 400px;
-  line-height: ${(props) => (props.lineHeight ? props.lineHeight + 'px' : 'normal')};
+  line-height: ${(props) =>
+    props.lineHeight ? props.lineHeight + 'px' : 'normal'};
   font-size: ${(props) => (props.fontSize ? props.fontSize + 'px' : '14px')};
   margin: 16px 0;
-  color: ${(props) => (props.color === 'lightPink' ? colors.lightPink : colors.pink)};
+  color: ${(props) =>
+    props.color === 'lightPink' ? colors.lightPink : colors.pink};
 `
 
-export const ButtonCardapioComp = styled.button`
+export const ButtonMenuComp = styled.button`
   width: 100%;
   color: ${colors.pink};
   background-color: ${colors.lightPink};
@@ -103,25 +105,7 @@ export const SideBarLabelComp = styled.label`
   margin: 8px 0;
 `
 
-export const SidebarContainerButtonsComp = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding-top: 24px;
-    row-gap: 8px;
-`
-
-export const SidebarInputsComp = styled.input`
-  width: 100%;
-  background-color: ${colors.lightPink};
-  outline: none;
-  color: #4B4B4B;
-  padding: 8px;
-  border: none;
-  font-size: 700;
-  font-size: 14px;
-`
-
-export const SidebarFormComp = styled.form`
+export const SideBarFormComp = styled.form`
   display: flex;
   flex-direction: column;
 
@@ -130,9 +114,34 @@ export const SidebarFormComp = styled.form`
     column-gap: 34px;
 
     li {
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
+  }
+
+  input {
+    /* width: 100%; */
+    background-color: ${colors.lightPink};
+    outline: none;
+    color: #4b4b4b;
+    padding: 8px;
+    border: none;
+    font-size: 700;
+    font-size: 14px;
+    border: 1px solid transparent;
+
+    &.input-error {
+      border-color: #f00;
+    }
+
+  }
+  
+  .cvvStyle {
+    width: 88px;
+  }
+
+  .cardNumberStyle {
+    width: 260px;
   }
 `
 

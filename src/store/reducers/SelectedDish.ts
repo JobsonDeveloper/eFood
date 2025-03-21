@@ -22,7 +22,7 @@ const SelectedDishSlice = createSlice({
   name: 'selectedDish',
   initialState,
   reducers: {
-    adicionar: (state, action: PayloadAction<SelectedDishProps>) => {
+    add: (state, action: PayloadAction<SelectedDishProps>) => {
       const { name, image, description, value, emphasis } = action.payload
 
       state.name = name
@@ -34,5 +34,5 @@ const SelectedDishSlice = createSlice({
   }
 })
 
-export const { adicionar } = SelectedDishSlice.actions
+export const { add } = SelectedDishSlice.actions
 export default SelectedDishSlice.reducer

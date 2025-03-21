@@ -46,3 +46,10 @@ export const AreaCloseSideBarComp = styled.div`
   height: 100vh;
   cursor: pointer;
 `
+
+export const SidebarContainerButtonsComp = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  row-gap: 8px;
+`

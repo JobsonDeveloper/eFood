@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { colors, TextComp, TitleComp } from '../../Styles'
 
-export const CardapioItemComp = styled.li`
+export const MenuItemComp = styled.li`
   background-color: ${colors.pink};
   width: 320px;
   padding: 8px;
@@ -20,7 +20,7 @@ export const CardapioItemComp = styled.li`
   }
 `
 
-export const ImageCardapioComp = styled.img`
+export const ImageMenuComp = styled.img`
   width: 304px;
   height: 167px;
 `

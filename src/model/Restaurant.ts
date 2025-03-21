@@ -1,6 +1,6 @@
-import Cardapio from './Cardapio'
+import Menu from './Menu'
 
-class Restautante {
+class Restautant {
   id: number
   titulo: string
   tipo: string
@@ -8,7 +8,7 @@ class Restautante {
   capa: string
   avaliacao: number
   destacado: boolean
-  cardapio: Cardapio[]
+  cardapio: Menu[]
 
   constructor(
     id: number,
@@ -18,7 +18,7 @@ class Restautante {
     capa: string,
     avaliacao: number,
     destacado: boolean,
-    cardapio: Cardapio[]
+    cardapio: Menu[]
   ) {
     this.id = id
     this.titulo = titulo
@@ -31,4 +31,4 @@ class Restautante {
   }
 }
 
-export default Restautante
+export default Restautant

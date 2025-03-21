@@ -1,40 +1,40 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import Cardapio from "../../model/Cardapio";
+import Menu from "../../model/Menu";
 
 type RestaurantSelectedProps = {
     restaurantName: string
     restaurantType: string,
     restaurantImage: string
-    cardapio: Cardapio[]
+    menu: Menu[]
 }
 
-const dados = sessionStorage.getItem('restaurant')
+const data = sessionStorage.getItem('restaurant')
 
 let initialState: RestaurantSelectedProps = {
     restaurantName: '',
     restaurantType: '',
     restaurantImage: '',
-    cardapio: []
+    menu: []
 }
 
-if(dados) {
-    initialState = JSON.parse(dados)
+if(data) {
+    initialState = JSON.parse(data)
 }
 
 const RestaurantSelectedSlice = createSlice({
     name: 'restaurantSelected',
     initialState,
     reducers: {
-        adicionar: (state, action: PayloadAction<RestaurantSelectedProps>) => {
+        add: (state, action: PayloadAction<RestaurantSelectedProps>) => {
             state.restaurantImage = action.payload.restaurantImage
             state.restaurantName = action.payload.restaurantName
             state.restaurantType = action.payload.restaurantType
-            state.cardapio = action.payload.cardapio
+            state.menu = action.payload.menu
 
             sessionStorage.setItem('restaurant', JSON.stringify(state))
         }
     }
 })
 
-export const { adicionar } = RestaurantSelectedSlice.actions
+export const { add } = RestaurantSelectedSlice.actions
 export default RestaurantSelectedSlice.reducer
