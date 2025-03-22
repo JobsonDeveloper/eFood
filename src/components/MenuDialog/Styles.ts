@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, TextComp, TitleComp } from '../../Styles'
+import { brackepoints, colors, TextComp, TitleComp } from '../../Styles'
 
 export const DialogComp = styled.div`
   position: fixed;
@@ -18,18 +18,16 @@ export const DialogDataComp = styled.article`
   padding: 32px;
   position: relative;
   display: flex;
-  width: 1024px;
+  width: 100%;
+  max-width: 950px;
   max-height: 100vh;
   column-gap: 24px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${brackepoints.littleBig}) {
     flex-direction: column;
     margin: 0 10px;
     width: max-content;
-  }
-
-  @media (max-width: 576px) {
-    padding: 25px;
+    padding: 0;
   }
 `
 
@@ -40,7 +38,14 @@ export const CloseComp = styled.img`
   width: 16px;
   height: 16px;
   cursor: pointer;
-  background-color: ${colors.pink};
+
+  @media (max-width: ${brackepoints.littleBig}) {
+    filter: drop-shadow(2px 2px 0px #000);
+    top: 3px;
+    right: 3px;
+    width: 24px;
+    height: 24px;
+  }
 `
 
 export const DishImageComp = styled.div`
@@ -50,36 +55,36 @@ export const DishImageComp = styled.div`
   background-size: cover;
   background-position: center;
 
-  @media (max-width: 576px) {
-    width: 250px;
+  @media (max-width: ${brackepoints.littleBig}) {
+    width: 100%;
     height: 250px;
-    margin-bottom: 8px;
+    object-fit: cover;
   }
 `
 
 export const DialogInfosComp = styled.div`
   ${TitleComp} {
-    max-width: 656px;
+    max-width: 580px;
     margin: 0 0 16px;
-
-    @media (max-width: 1024px) {
-      width: 250px;
-      margin-top: 8px;
-    }
   }
 
   ${TextComp} {
-    max-width: 656px;
+    max-width: 580px;
     margin: 0;
-
-    @media (max-width: 1024px) {
-      width: 250px;
-    }
   }
 
   .emphasis {
     margin-top: 25px;
     margin-bottom: 16px;
+  }
+
+  @media (max-width: ${brackepoints.littleBig}) {
+    padding: 10px;
+
+    ${TitleComp} {
+      margin-top: 8px;
+      text-align: center;
+    }
   }
 `
 
@@ -95,5 +100,10 @@ export const ButtonAddCartComp = styled.button`
 
   &:hover {
     background-color: ${colors.whiteTow};
+  }
+
+  @media (max-width: ${brackepoints.littleBig}) {
+    width: 100%;
+    height: 40px;
   }
 `

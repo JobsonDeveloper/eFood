@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../Styles'
+import { brackepoints, colors } from '../../Styles'
 
 export const CartItemComp = styled.li`
   display: flex;
@@ -7,7 +7,7 @@ export const CartItemComp = styled.li`
   background-color: ${colors.lightPink};
   width: 344px;
 
-  @media (max-width: 576px) {
+  @media (max-width: ${brackepoints.small}) {
     width: 300px;
   }
 `

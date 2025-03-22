@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../Styles'
+import { brackepoints, colors } from '../../Styles'
 
 export const AsideContainerComp = styled.div`
   position: fixed;
@@ -17,6 +17,14 @@ export const SideBarComp = styled.aside`
     }
     to {
       right: 0;
+    }
+  }
+
+  @media (max-width: ${brackepoints.small}) {
+    .cartListButtons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
   }
 

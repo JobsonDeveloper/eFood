@@ -1,21 +1,21 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type Props = {
-    value: boolean
+  value: boolean
 }
 
 const initialState: Props = {
-    value: true
+  value: true
 }
 
 const LoadingSlice = createSlice({
-    name: 'loading',
-    initialState,
-    reducers: {
-        showLoading: (state, action: PayloadAction<boolean>) => {
-         state.value = action.payload
-        }
+  name: 'loading',
+  initialState,
+  reducers: {
+    showLoading: (state, action: PayloadAction<boolean>) => {
+      state.value = action.payload
     }
+  }
 })
 
 export const { showLoading } = LoadingSlice.actions

@@ -12,7 +12,7 @@ const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
   useEffect(() => {
     AOS.init()
   }, [])
-  
+
   return (
     <S.ItemComp data-aos="zoom-in">
       <S.ImageComp src={capa} alt="Imagem do restaurante" />

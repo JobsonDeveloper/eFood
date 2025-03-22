@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, TextComp, TitleComp } from '../../Styles'
+import { brackepoints, colors, TextComp, TitleComp } from '../../Styles'
 
 export const MenuItemComp = styled.li`
   background-color: ${colors.pink};
@@ -18,10 +18,18 @@ export const MenuItemComp = styled.li`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  @media (max-width: ${brackepoints.small}) {
+    width: 100%;
+  }
 `
 
 export const ImageMenuComp = styled.img`
   width: 304px;
   height: 167px;
   object-fit: cover;
+
+  @media (max-width: ${brackepoints.small}) {
+    width: 100%;
+  }
 `

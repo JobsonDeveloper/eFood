@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../Styles'
+import { brackepoints, colors } from '../../Styles'
 
 export const HeaderComp = styled.header`
   min-height: 163px;
@@ -29,12 +29,12 @@ export const ListComp = styled.ul`
     display: none;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${brackepoints.littleSmall}) {
     grid-template-columns: none;
-    grid-template-areas: 
-    "logo"
-    "link"
-    "carrinho";
+    grid-template-areas:
+      'logo'
+      'link'
+      'carrinho';
     row-gap: 36px;
 
     .linkRestaurante {
@@ -72,6 +72,11 @@ export const TitleComp = styled.h1`
   margin-bottom: 40px;
   max-width: 539px;
   height: 174px;
+
+  @media (max-width: ${brackepoints.small}) {
+    font-size: 24px;
+    max-width: 310px;
+  }
 `
 
 export const LinksItemComp = styled.li`

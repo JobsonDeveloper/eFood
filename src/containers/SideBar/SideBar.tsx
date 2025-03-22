@@ -48,27 +48,27 @@ const SideBar = () => {
       cep: Yup.string().required('Este campo é obrigatório'),
       number: Yup.string().required('Este campo é obrigatório'),
       complement: Yup.string(),
-      cardOwner: Yup.string().when((values, schema) =>
+      cardOwner: Yup.string().when((_values, schema) =>
         show === 'payment'
           ? schema.required('Este campo é obrigatório')
           : schema
       ),
-      cardNumber: Yup.string().when((values, schema) =>
+      cardNumber: Yup.string().when((_values, schema) =>
         show === 'payment'
           ? schema.required('Este campo é obrigatório')
           : schema
       ),
-      cvv: Yup.string().when((values, schema) =>
+      cvv: Yup.string().when((_values, schema) =>
         show === 'payment'
           ? schema.required('Este campo é obrigatório')
           : schema
       ),
-      expireMonth: Yup.string().when((values, schema) =>
+      expireMonth: Yup.string().when((_values, schema) =>
         show === 'payment'
           ? schema.required('Este campo é obrigatório')
           : schema
       ),
-      expireYear: Yup.string().when((values, schema) =>
+      expireYear: Yup.string().when((_values, schema) =>
         show === 'payment'
           ? schema.required('Este campo é obrigatório')
           : schema
@@ -113,16 +113,15 @@ const SideBar = () => {
       return hasError
     }
 
-    if(
+    if (
       verifyError('fullName') ||
-      verifyError('address') || 
-      verifyError('city') || 
-      verifyError('cep') || 
+      verifyError('address') ||
+      verifyError('city') ||
+      verifyError('cep') ||
       verifyError('number')
     ) {
       return
-    }
-    else {
+    } else {
       setShow('payment')
     }
   }

@@ -5,7 +5,11 @@ import { RootReducer } from '../../store/store'
 import * as S from './Styles'
 
 const Hero = () => {
-  const { restaurantName: name, restaurantType: type, restaurantImage: cover } = useSelector((state: RootReducer) => state.restaurantSelected)
+  const {
+    restaurantName: name,
+    restaurantType: type,
+    restaurantImage: cover
+  } = useSelector((state: RootReducer) => state.restaurantSelected)
 
   return (
     <S.HeroComp>

@@ -6,7 +6,9 @@ import { RootReducer } from '../../store/store'
 import { ListComp } from './Styles'
 
 const RestaurantList = () => {
-  const { item: restaurants } = useSelector((state: RootReducer) => state.restaurant)
+  const { item: restaurants } = useSelector(
+    (state: RootReducer) => state.restaurant
+  )
 
   return (
     <ListComp className="container">

@@ -41,7 +41,7 @@ const Header = () => {
               {cart.length} produto(s) no carrinho
             </S.CartItemComp>
             <div className="carrinhoIcon">
-              <FaCartShopping onClick={() => dispatch(changeShow(true))}/>
+              <FaCartShopping onClick={() => dispatch(changeShow(true))} />
             </div>
           </>
         )}

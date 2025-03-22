@@ -58,7 +58,7 @@ const MenuDialog = ({ setShowDish }: MenuDialogProps) => {
           <TextDescription color="lightPink">{description}</TextDescription>
 
           <TextDescription color="lightPink" className="emphasis">
-            {emphasis}
+            Serve: de {emphasis}
           </TextDescription>
 
           <S.ButtonAddCartComp onClick={AddCart}>

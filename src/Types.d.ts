@@ -1,3 +1,12 @@
+// ------- Styles ------
+
+type TextsProps = {
+  color?: string
+  fontSize?: number
+  lineHeight?: string
+  fontWeight?: string
+}
+
 // ------- Components ------
 
 type CartItemProps = {
@@ -63,4 +72,3 @@ type ApiPurchasePayload = {
     }
   }
 }
-

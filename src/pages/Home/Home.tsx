@@ -11,7 +11,7 @@ const Home = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if(data) {
+    if (data) {
       dispatch(update(data))
       dispatch(showLoading(false))
     }

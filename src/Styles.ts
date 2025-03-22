@@ -10,6 +10,13 @@ export const colors = {
   black: '#000'
 }
 
+export const brackepoints = {
+  small: '576px',
+  littleSmall: '768px',
+  littleBig: '992px',
+  big: '1200px'
+}
+
 const GlobalStyle = createGlobalStyle`
   * {
       margin: 0;
@@ -25,25 +32,25 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: ${brackepoints.big}) {
     .container {
       max-width: 950px;
     }
   }
 
-  @media (max-width: 992px) {
+  @media (max-width: ${brackepoints.littleBig}) {
     .container {
       max-width: 768px;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${brackepoints.littleSmall}) {
     .container {
       max-width: 576px;
     }
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: ${brackepoints.small}) {
     .container {
       max-width: 310px;
     }
@@ -53,12 +60,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${colors.whiteTow};
   }
 
-  .btnCloseAside {
-    margin-top: 8px;
-
-  }
-
-  @media (min-width: 576px) {
+  @media (min-width: ${brackepoints.small}) {
     .btnCloseAside {
       display: none;
     }
@@ -79,13 +81,6 @@ export const EmphasisComp = styled.span`
   font-size: 12px;
   padding: 6px 4px;
 `
-
-type TextsProps = {
-  color?: string
-  fontSize?: number
-  lineHeight?: string
-  fontWeight?: string
-}
 
 export const TitleComp = styled.h4<TextsProps>`
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : 'normal')};
@@ -149,7 +144,6 @@ export const SideBarFormComp = styled.div`
   }
 
   input {
-    /* width: 100%; */
     background-color: ${colors.lightPink};
     outline: none;
     color: #4b4b4b;
@@ -163,15 +157,24 @@ export const SideBarFormComp = styled.div`
       background-color: rgb(255, 125, 32);
       border-color: ${colors.black};
     }
-
   }
-  
+
   .cvvStyle {
     width: 88px;
   }
 
   .cardNumberStyle {
     width: 260px;
+  }
+
+  @media (max-width: ${brackepoints.littleSmall}) {
+    input {
+      min-width: 300px;
+    }
+
+    ul {
+      flex-direction: column;
+    }
   }
 `
 

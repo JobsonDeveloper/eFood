@@ -13,7 +13,7 @@ const Loading = () => {
     <>
       {value === true && (
         <S.LoadingContainerComp>
-          <DotLoader color={colors.pink}/>
+          <DotLoader color={colors.pink} />
         </S.LoadingContainerComp>
       )}
     </>

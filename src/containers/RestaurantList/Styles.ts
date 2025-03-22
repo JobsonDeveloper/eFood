@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { brackepoints } from '../../Styles'
 
 export const ListComp = styled.ul`
   display: grid;
@@ -14,7 +15,7 @@ export const ListComp = styled.ul`
     row-gap: 12px; */
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${brackepoints.littleSmall}) {
     grid-template-columns: 1fr;
     padding: 40px 5px 60px 5px;
   }

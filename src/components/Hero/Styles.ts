@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { colors } from "../../Styles"
+import styled from 'styled-components'
+import { colors } from '../../Styles'
 
 export const HeroComp = styled.article`
   display: flex;

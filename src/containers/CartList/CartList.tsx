@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootReducer } from '../../store/store'
@@ -53,29 +53,32 @@ const CartList = ({ setShow }: CartListProps) => {
             />
           ))
         ) : (
-          <S.CartDescriptionComp>Sem produtos no carrinho</S.CartDescriptionComp>
+          <S.CartDescriptionComp>
+            Sem produtos no carrinho
+          </S.CartDescriptionComp>
         )}
       </S.CartListComp>
 
-      {items.length > 0 && (
-        <>
-          <S.CartTotalValueComp>
-            <p>Valor total</p>
-            <p>{allValue.replace('.', ',')}</p>
-          </S.CartTotalValueComp>
-
-          <ButtonMenuComp onClick={makePayment}>
-            Continuar com a entrega
-          </ButtonMenuComp>
-        </>
-      )}
-      <ButtonMenuComp
-        className="btnCloseAside"
-        type="button"
-        onClick={() => dispatch(changeShow(false))}
-      >
-        voltar
-      </ButtonMenuComp>
+      <div className="cartListButtons">
+        {items.length > 0 && (
+          <>
+            <S.CartTotalValueComp>
+              <p>Valor total</p>
+              <p>{allValue.replace('.', ',')}</p>
+            </S.CartTotalValueComp>
+            <ButtonMenuComp onClick={makePayment}>
+              Continuar com a entrega
+            </ButtonMenuComp>
+          </>
+        )}
+        <ButtonMenuComp
+          className="btnCloseAside"
+          type="button"
+          onClick={() => dispatch(changeShow(false))}
+        >
+          voltar
+        </ButtonMenuComp>
+      </div>
     </>
   )
 }

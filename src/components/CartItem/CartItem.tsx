@@ -9,7 +9,13 @@ import 'aos/dist/aos.css'
 import { TitleComp } from '../../Styles'
 import * as S from './Styles'
 
-const CartItem = ({ id: prodId, name: prodName, image: prodImage, value: prodValue, delay }: CartItemProps) => {
+const CartItem = ({
+  id: prodId,
+  name: prodName,
+  image: prodImage,
+  value: prodValue,
+  delay
+}: CartItemProps) => {
   const valueDishString = `${prodValue.toFixed(2)}`
   const showValue = valueDishString.replace('.', ',')
   const dispatch = useDispatch()
@@ -25,10 +31,9 @@ const CartItem = ({ id: prodId, name: prodName, image: prodImage, value: prodVal
     )
   }
 
-   useEffect(() => {
-      AOS.init()
-    },[])
-  
+  useEffect(() => {
+    AOS.init()
+  }, [])
 
   return (
     <S.CartItemComp data-aos="fade-left" data-aos-delay={delay}>
@@ -37,7 +42,11 @@ const CartItem = ({ id: prodId, name: prodName, image: prodImage, value: prodVal
       <S.CartDataComp>
         <TitleComp fontWeight="900">{prodName}</TitleComp>
         <S.ProductValueComp>R$ {showValue}</S.ProductValueComp>
-        <S.ImageCloseComp src={ImgDelete} alt="Lixeira" onClick={removeCartItem}/>
+        <S.ImageCloseComp
+          src={ImgDelete}
+          alt="Lixeira"
+          onClick={removeCartItem}
+        />
       </S.CartDataComp>
     </S.CartItemComp>
   )

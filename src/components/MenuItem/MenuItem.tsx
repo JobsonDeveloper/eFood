@@ -1,9 +1,8 @@
 import { useDispatch } from 'react-redux'
-import { Dispatch, SetStateAction, useEffect } from 'react'
+import { useEffect } from 'react'
 import AOS from 'aos'
 
 import { add } from '../../store/reducers/SelectedDish'
-import Menu from '../../model/Menu'
 
 import 'aos/dist/aos.css'
 import { ButtonMenuComp, TextDescription, TitleComp } from '../../Styles'
@@ -30,7 +29,7 @@ const MenuItem = ({ menu, setShowDish }: MenuItemProps) => {
 
   useEffect(() => {
     AOS.init()
-  },[])
+  }, [])
 
   return (
     <S.MenuItemComp data-aos="zoom-in">
@@ -38,10 +37,10 @@ const MenuItem = ({ menu, setShowDish }: MenuItemProps) => {
       <TitleComp color="lightPink" fontWeight="900">
         {nome}
       </TitleComp>
-      <TextDescription color="lightPink">
-        {descricao}
-      </TextDescription>
-      <ButtonMenuComp onClick={setDataDish}>Adicionar ao carrinho</ButtonMenuComp>
+      <TextDescription color="lightPink">{descricao}</TextDescription>
+      <ButtonMenuComp onClick={setDataDish}>
+        Adicionar ao carrinho
+      </ButtonMenuComp>
     </S.MenuItemComp>
   )
 }

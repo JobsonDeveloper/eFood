@@ -18,7 +18,8 @@ const store = configureStore({
     restaurant: RestaurantSlice,
     [Api.reducerPath]: Api.reducer
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(Api.middleware)
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(Api.middleware)
 })
 
 export type RootReducer = ReturnType<typeof store.getState>

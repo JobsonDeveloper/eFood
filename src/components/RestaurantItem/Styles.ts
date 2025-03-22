@@ -2,13 +2,13 @@ import { Link } from 'react-router'
 
 import styled from 'styled-components'
 
-import { colors } from '../../Styles'
+import { brackepoints, colors } from '../../Styles'
 
 export const ItemComp = styled.li`
   position: relative;
 
-  @media (max-width: 992px) {
-    width: 310px;
+  @media (max-width: ${brackepoints.littleBig}) {
+    width: 100%;
   }
 `
 
@@ -19,9 +19,9 @@ export const ImageComp = styled.img`
   flex-direction: column;
   object-fit: cover;
 
-  @media (max-width: 992px) {
-    width: 310px;
-    height: 142px;
+  @media (max-width: ${brackepoints.littleBig}) {
+    /* width: 100%; */
+    /* height: 142px; */
   }
 `
 

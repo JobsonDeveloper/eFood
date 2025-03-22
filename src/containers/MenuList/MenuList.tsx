@@ -14,11 +14,7 @@ const MenuList = () => {
   return (
     <MenuListComp className="container">
       {menu.map((item) => (
-        <MenuItem
-          key={item.id}
-          menu={item}
-          setShowDish={setShowDish}
-        />
+        <MenuItem key={item.id} menu={item} setShowDish={setShowDish} />
       ))}
       {showDish && <MenuDialog setShowDish={setShowDish} />}
     </MenuListComp>

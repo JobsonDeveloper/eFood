@@ -24,12 +24,14 @@ const Restaurant = () => {
     item.map((data) => {
       if (id) {
         if (data.id == parseInt(id)) {
-          dispatch(add({
-            restaurantName: data.titulo,
-            restaurantType: data.tipo,
-            restaurantImage: data.capa,
-            menu: data.cardapio
-          }))
+          dispatch(
+            add({
+              restaurantName: data.titulo,
+              restaurantType: data.tipo,
+              restaurantImage: data.capa,
+              menu: data.cardapio
+            })
+          )
         }
       }
     })

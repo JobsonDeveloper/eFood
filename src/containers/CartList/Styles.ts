@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../Styles'
+import { brackepoints, colors } from '../../Styles'
 
 export const CartListComp = styled.ul`
   display: grid;
@@ -18,7 +18,7 @@ export const CartTotalValueComp = styled.div`
     color: ${colors.lightPink};
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: ${brackepoints.small}) {
     width: 300px;
   }
 `

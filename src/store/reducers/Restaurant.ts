@@ -1,22 +1,22 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import Restaurant from "../../model/Restaurant"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import Restaurant from '../../model/Restaurant'
 
 type RestaurantProps = {
-    item: Restaurant[]
+  item: Restaurant[]
 }
 
 const initialState: RestaurantProps = {
-    item: []
+  item: []
 }
 
 const RestaurantSlice = createSlice({
-    name: 'restaurant',
-    initialState,
-    reducers: {
-        update: (state, action: PayloadAction<Restaurant[]>) => {
-            state.item = action.payload
-        }
+  name: 'restaurant',
+  initialState,
+  reducers: {
+    update: (state, action: PayloadAction<Restaurant[]>) => {
+      state.item = action.payload
     }
+  }
 })
 
 export const { update } = RestaurantSlice.actions

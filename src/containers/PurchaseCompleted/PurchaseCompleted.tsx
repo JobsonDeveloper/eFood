@@ -1,14 +1,7 @@
-import { Dispatch, SetStateAction } from 'react'
-
-import {
-  ButtonMenuComp,
-  SideBarFormComp,
-  SideBarTitleComp
-} from '../../Styles'
+import { ButtonMenuComp, SideBarFormComp, SideBarTitleComp } from '../../Styles'
 import { TextComp } from './Styles'
 
 const PurchaseCompleted = ({ setShow, requestId }: PurchaseCompletedProps) => {
-
   const purchaseCompleted = () => {
     setShow('list')
   }
