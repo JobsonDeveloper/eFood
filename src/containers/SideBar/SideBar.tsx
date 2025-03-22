@@ -4,7 +4,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { changeShow } from '../../store/reducers/Cart'
+import { changeShow, clear } from '../../store/reducers/Cart'
 import { getTotalPrice } from '../../utils/utils'
 import CartList from '../CartList/CartList'
 import { RootReducer } from '../../store/store'
@@ -25,6 +25,7 @@ const SideBar = () => {
   const { items } = useSelector((state: RootReducer) => state.cart)
   const [totalValue, setTotalValue] = useState('')
   const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
+  const [requestId, setRequestId] = useState(0)
 
   const formValidator = useFormik({
     initialValues: {
@@ -47,11 +48,31 @@ const SideBar = () => {
       cep: Yup.string().required('Este campo é obrigatório'),
       number: Yup.string().required('Este campo é obrigatório'),
       complement: Yup.string(),
-      cardOwner: Yup.string().required('Este campo é obrigatório'),
-      cardNumber: Yup.string().required('Este campo é obrigatório'),
-      cvv: Yup.string().required('Este campo é obrigatório'),
-      expireMonth: Yup.string().required('Este campo é obrigatório'),
-      expireYear: Yup.string().required('Este campo é obrigatório')
+      cardOwner: Yup.string().when((values, schema) =>
+        show === 'payment'
+          ? schema.required('Este campo é obrigatório')
+          : schema
+      ),
+      cardNumber: Yup.string().when((values, schema) =>
+        show === 'payment'
+          ? schema.required('Este campo é obrigatório')
+          : schema
+      ),
+      cvv: Yup.string().when((values, schema) =>
+        show === 'payment'
+          ? schema.required('Este campo é obrigatório')
+          : schema
+      ),
+      expireMonth: Yup.string().when((values, schema) =>
+        show === 'payment'
+          ? schema.required('Este campo é obrigatório')
+          : schema
+      ),
+      expireYear: Yup.string().when((values, schema) =>
+        show === 'payment'
+          ? schema.required('Este campo é obrigatório')
+          : schema
+      )
     }),
     onSubmit: (values) => {
       purchase({
@@ -81,10 +102,30 @@ const SideBar = () => {
           }
         }
       })
-
-      console.log(values)
     }
   })
+
+  const showPayment = () => {
+    function verifyError(inputName: string) {
+      const isTouched = inputName in formValidator.touched
+      const isInvalid = inputName in formValidator.errors
+      const hasError = !isTouched || (isTouched && isInvalid)
+      return hasError
+    }
+
+    if(
+      verifyError('fullName') ||
+      verifyError('address') || 
+      verifyError('city') || 
+      verifyError('cep') || 
+      verifyError('number')
+    ) {
+      return
+    }
+    else {
+      setShow('payment')
+    }
+  }
 
   const checkInputHasError = (fieldName: string) => {
     const isTouched = fieldName in formValidator.touched
@@ -98,7 +139,11 @@ const SideBar = () => {
   }, [items])
 
   useEffect(() => {
-    if (isSuccess) setShow('finish')
+    if (data && isSuccess) {
+      setRequestId(data.orderId)
+      setShow('finish')
+      dispatch(clear())
+    }
   }, [isSuccess])
 
   return (
@@ -108,218 +153,225 @@ const SideBar = () => {
       ></S.AreaCloseSideBarComp>
       <S.SideBarComp>
         {show === 'list' && <CartList setShow={setShow} />}
-        {show === 'delivery' && (
-          <SideBarFormComp>
-            <SideBarTitleComp>Entrega</SideBarTitleComp>
+        <form onSubmit={formValidator.handleSubmit}>
+          {show === 'delivery' && (
+            <SideBarFormComp>
+              <SideBarTitleComp>Entrega</SideBarTitleComp>
 
-            <SideBarLabelComp htmlFor="name">Quem irá receber</SideBarLabelComp>
-            <input
-              type="text"
-              id="name"
-              name="fullName"
-              value={formValidator.values.fullName}
-              onChange={formValidator.handleChange}
-              onBlur={formValidator.handleBlur}
-              className={checkInputHasError('fullName') ? 'input-error' : ''}
-            />
+              <SideBarLabelComp htmlFor="name">
+                Quem irá receber
+              </SideBarLabelComp>
+              <input
+                type="text"
+                id="name"
+                name="fullName"
+                value={formValidator.values.fullName}
+                onChange={formValidator.handleChange}
+                onBlur={formValidator.handleBlur}
+                className={checkInputHasError('fullName') ? 'input-error' : ''}
+              />
 
-            <SideBarLabelComp htmlFor="address">Endereço</SideBarLabelComp>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              value={formValidator.values.address}
-              onChange={formValidator.handleChange}
-              onBlur={formValidator.handleBlur}
-              className={checkInputHasError('address') ? 'input-error' : ''}
-            />
+              <SideBarLabelComp htmlFor="address">Endereço</SideBarLabelComp>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                value={formValidator.values.address}
+                onChange={formValidator.handleChange}
+                onBlur={formValidator.handleBlur}
+                className={checkInputHasError('address') ? 'input-error' : ''}
+              />
 
-            <SideBarLabelComp htmlFor="city">Cidade</SideBarLabelComp>
-            <input
-              type="text"
-              id="city"
-              name="city"
-              value={formValidator.values.city}
-              onChange={formValidator.handleChange}
-              onBlur={formValidator.handleBlur}
-              className={checkInputHasError('city') ? 'input-error' : ''}
-            />
+              <SideBarLabelComp htmlFor="city">Cidade</SideBarLabelComp>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                value={formValidator.values.city}
+                onChange={formValidator.handleChange}
+                onBlur={formValidator.handleBlur}
+                className={checkInputHasError('city') ? 'input-error' : ''}
+              />
 
-            <ul>
-              <li>
-                <SideBarLabelComp htmlFor="cep">CEP</SideBarLabelComp>
-                <InputMask
-                  mask="99999-999"
-                  type="text"
-                  id="cep"
-                  name="cep"
-                  value={formValidator.values.cep}
-                  onChange={formValidator.handleChange}
-                  onBlur={formValidator.handleBlur}
-                  className={checkInputHasError('cep') ? 'input-error' : ''}
-                />
-              </li>
+              <ul>
+                <li>
+                  <SideBarLabelComp htmlFor="cep">CEP</SideBarLabelComp>
+                  <InputMask
+                    mask="99999-999"
+                    type="text"
+                    id="cep"
+                    name="cep"
+                    value={formValidator.values.cep}
+                    onChange={formValidator.handleChange}
+                    onBlur={formValidator.handleBlur}
+                    className={checkInputHasError('cep') ? 'input-error' : ''}
+                  />
+                </li>
 
-              <li>
-                <SideBarLabelComp htmlFor="number">Número</SideBarLabelComp>
-                <input
-                  type="number"
-                  id="number"
-                  name="number"
-                  value={formValidator.values.number}
-                  onChange={formValidator.handleChange}
-                  onBlur={formValidator.handleBlur}
-                  className={checkInputHasError('number') ? 'input-error' : ''}
-                />
-              </li>
-            </ul>
+                <li>
+                  <SideBarLabelComp htmlFor="number">Número</SideBarLabelComp>
+                  <input
+                    type="number"
+                    id="number"
+                    name="number"
+                    value={formValidator.values.number}
+                    onChange={formValidator.handleChange}
+                    onBlur={formValidator.handleBlur}
+                    className={
+                      checkInputHasError('number') ? 'input-error' : ''
+                    }
+                  />
+                </li>
+              </ul>
 
-            <SideBarLabelComp htmlFor="complement">
-              Complemento (opcional)
-            </SideBarLabelComp>
-            <input
-              type="text"
-              id="complement"
-              name="complement"
-              value={formValidator.values.complement}
-              onChange={formValidator.handleChange}
-              onBlur={formValidator.handleBlur}
-              className={checkInputHasError('complement') ? 'input-error' : ''}
-            />
+              <SideBarLabelComp htmlFor="complement">
+                Complemento (opcional)
+              </SideBarLabelComp>
+              <input
+                type="text"
+                id="complement"
+                name="complement"
+                value={formValidator.values.complement}
+                onChange={formValidator.handleChange}
+                onBlur={formValidator.handleBlur}
+                className={
+                  checkInputHasError('complement') ? 'input-error' : ''
+                }
+              />
 
-            <S.SidebarContainerButtonsComp>
-              <ButtonMenuComp
-                type="button"
-                onClick={() => setShow('payment')}
-              >
-                Continuar com o pagamento
-              </ButtonMenuComp>
-              <ButtonMenuComp type="button" onClick={() => setShow('list')}>
-                Voltar para o carrinho
-              </ButtonMenuComp>
-              <ButtonMenuComp
-                type="button"
-                onClick={() => dispatch(changeShow(false))}
-              >
-                voltar
-              </ButtonMenuComp>
-            </S.SidebarContainerButtonsComp>
-          </SideBarFormComp>
+              <S.SidebarContainerButtonsComp>
+                <ButtonMenuComp type="button" onClick={showPayment}>
+                  Continuar com o pagamento
+                </ButtonMenuComp>
+                <ButtonMenuComp type="button" onClick={() => setShow('list')}>
+                  Voltar para o carrinho
+                </ButtonMenuComp>
+                <ButtonMenuComp
+                  type="button"
+                  onClick={() => dispatch(changeShow(false))}
+                >
+                  voltar
+                </ButtonMenuComp>
+              </S.SidebarContainerButtonsComp>
+            </SideBarFormComp>
+          )}
+          {show === 'payment' && (
+            <SideBarFormComp>
+              <SideBarTitleComp>
+                Pagamento - Valor a pagar R$ {totalValue}
+              </SideBarTitleComp>
+
+              <SideBarLabelComp htmlFor="cardOwner">
+                Nome no cartão
+              </SideBarLabelComp>
+              <input
+                type="text"
+                id="cardOwner"
+                name="cardOwner"
+                value={formValidator.values.cardOwner}
+                onChange={formValidator.handleChange}
+                onBlur={formValidator.handleBlur}
+                className={checkInputHasError('cardOwner') ? 'input-error' : ''}
+              />
+
+              <ul>
+                <li>
+                  <SideBarLabelComp htmlFor="number">
+                    Número do cartão
+                  </SideBarLabelComp>
+                  <InputMask
+                    type="text"
+                    id="cardNumber"
+                    name="cardNumber"
+                    value={formValidator.values.cardNumber}
+                    onChange={formValidator.handleChange}
+                    onBlur={formValidator.handleBlur}
+                    className={`cardNumberStyle ${
+                      checkInputHasError('cardNumber') ? 'input-error' : ''
+                    }`}
+                    mask="9999 9999 9999 9999"
+                  />
+                </li>
+
+                <li>
+                  <SideBarLabelComp htmlFor="cvv">CVV</SideBarLabelComp>
+                  <InputMask
+                    type="text"
+                    id="cvv"
+                    name="cvv"
+                    value={formValidator.values.cvv}
+                    onChange={formValidator.handleChange}
+                    onBlur={formValidator.handleBlur}
+                    className={`cvvStyle ${
+                      checkInputHasError('cvv') ? 'input-error' : ''
+                    }`}
+                    mask="999"
+                  />
+                </li>
+              </ul>
+
+              <ul>
+                <li>
+                  <SideBarLabelComp htmlFor="expireMonth">
+                    Mês de vencimento
+                  </SideBarLabelComp>
+                  <InputMask
+                    type="text"
+                    id="expireMonth"
+                    name="expireMonth"
+                    value={formValidator.values.expireMonth}
+                    onChange={formValidator.handleChange}
+                    onBlur={formValidator.handleBlur}
+                    className={
+                      checkInputHasError('expireMonth') ? 'input-error' : ''
+                    }
+                    mask="99"
+                  />
+                </li>
+
+                <li>
+                  <SideBarLabelComp htmlFor="expireYear">
+                    Ano de vencimento
+                  </SideBarLabelComp>
+                  <InputMask
+                    type="text"
+                    id="expireYear"
+                    name="expireYear"
+                    value={formValidator.values.expireYear}
+                    onChange={formValidator.handleChange}
+                    onBlur={formValidator.handleBlur}
+                    className={
+                      checkInputHasError('expireYear') ? 'input-error' : ''
+                    }
+                    mask="9999"
+                  />
+                </li>
+              </ul>
+
+              <S.SidebarContainerButtonsComp>
+                <ButtonMenuComp type="submit">
+                  {isLoading ? 'Finalizando...' : 'Finalizar pagamento'}
+                </ButtonMenuComp>
+                <ButtonMenuComp
+                  type="button"
+                  onClick={() => setShow('delivery')}
+                >
+                  Voltar para a edição de endereço
+                </ButtonMenuComp>
+                <ButtonMenuComp
+                  className="btnCloseAside"
+                  type="button"
+                  onClick={() => dispatch(changeShow(false))}
+                >
+                  voltar
+                </ButtonMenuComp>
+              </S.SidebarContainerButtonsComp>
+            </SideBarFormComp>
+          )}
+        </form>
+        {show === 'finish' && (
+          <PurchaseCompleted setShow={setShow} requestId={requestId} />
         )}
-        {show === 'payment' && (
-          <SideBarFormComp onSubmit={formValidator.handleSubmit}>
-            <SideBarTitleComp>
-              Pagamento - Valor a pagar R$ {totalValue}
-            </SideBarTitleComp>
-
-            <SideBarLabelComp htmlFor="cardOwner">
-              Nome no cartão
-            </SideBarLabelComp>
-            <input
-              type="text"
-              id="cardOwner"
-              name="cardOwner"
-              value={formValidator.values.cardOwner}
-              onChange={formValidator.handleChange}
-              onBlur={formValidator.handleBlur}
-              className={checkInputHasError('cardOwner') ? 'input-error' : ''}
-            />
-
-            <ul>
-              <li>
-                <SideBarLabelComp htmlFor="number">
-                  Número do cartão
-                </SideBarLabelComp>
-                <InputMask
-                  mask="9999 9999 9999 9999"
-                  type="text"
-                  id="cardNumber"
-                  name="cardNumber"
-                  value={formValidator.values.cardNumber}
-                  onChange={formValidator.handleChange}
-                  onBlur={formValidator.handleBlur}
-                  className={`cardNumberStyle ${
-                    checkInputHasError('cardNumber') ? 'input-error' : ''
-                  }`}
-                />
-              </li>
-
-              <li>
-                <SideBarLabelComp htmlFor="cvv">CVV</SideBarLabelComp>
-                <InputMask
-                  mask="999"
-                  type="text"
-                  id="cvv"
-                  name="cvv"
-                  value={formValidator.values.cvv}
-                  onChange={formValidator.handleChange}
-                  onBlur={formValidator.handleBlur}
-                  className={`cvvStyle ${
-                    checkInputHasError('cvv') ? 'input-error' : ''
-                  }`}
-                />
-              </li>
-            </ul>
-
-            <ul>
-              <li>
-                <SideBarLabelComp htmlFor="expireMonth">
-                  Mês de vencimento
-                </SideBarLabelComp>
-                <InputMask
-                  mask="99"
-                  type="text"
-                  id="expireMonth"
-                  name="expireMonth"
-                  value={formValidator.values.expireMonth}
-                  onChange={formValidator.handleChange}
-                  onBlur={formValidator.handleBlur}
-                  className={
-                    checkInputHasError('expireMonth') ? 'input-error' : ''
-                  }
-                />
-              </li>
-
-              <li>
-                <SideBarLabelComp htmlFor="expireYear">
-                  Ano de vencimento
-                </SideBarLabelComp>
-                <InputMask
-                  mask="9999"
-                  type="text"
-                  id="expireYear"
-                  name="expireYear"
-                  value={formValidator.values.expireYear}
-                  onChange={formValidator.handleChange}
-                  onBlur={formValidator.handleBlur}
-                  className={
-                    checkInputHasError('expireYear') ? 'input-error' : ''
-                  }
-                />
-              </li>
-            </ul>
-
-            <S.SidebarContainerButtonsComp>
-              <ButtonMenuComp type="submit">
-                {isLoading ? 'Finalizando...' : 'Finalizar pagamento'}
-              </ButtonMenuComp>
-              <ButtonMenuComp
-                type="button"
-                onClick={() => setShow('delivery')}
-              >
-                Voltar para a edição de endereço
-              </ButtonMenuComp>
-              <ButtonMenuComp
-                className="btnCloseAside"
-                type="button"
-                onClick={() => dispatch(changeShow(false))}
-              >
-                voltar
-              </ButtonMenuComp>
-            </S.SidebarContainerButtonsComp>
-          </SideBarFormComp>
-        )}
-        {isSuccess && data && <PurchaseCompleted setShow={setShow} />}
       </S.SideBarComp>
     </S.AsideContainerComp>
   )

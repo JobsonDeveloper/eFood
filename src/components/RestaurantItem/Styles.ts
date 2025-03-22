@@ -13,8 +13,8 @@ export const ItemComp = styled.li`
 `
 
 export const ImageComp = styled.img`
-  width: 472px;
   height: 217px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   object-fit: cover;

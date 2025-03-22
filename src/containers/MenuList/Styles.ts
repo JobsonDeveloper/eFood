@@ -7,10 +7,12 @@ export const MenuListComp = styled.ul`
     gap: 32px;
     justify-items: center;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
         grid-template-columns: 1fr 1fr;
     }
-    @media (max-width: 680px) {
+    
+    @media (max-width: 768px) {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 `

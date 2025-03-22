@@ -1,7 +1,4 @@
-import { useDispatch } from 'react-redux'
 import { Dispatch, SetStateAction } from 'react'
-
-import { clear } from '../../store/reducers/Cart'
 
 import {
   ButtonMenuComp,
@@ -10,23 +7,15 @@ import {
 } from '../../Styles'
 import { TextComp } from './Styles'
 
-type Props = {
-  setShow: Dispatch<SetStateAction<string>>
-}
-
-const PurchaseCompleted = ({ setShow }: Props) => {
-  const dispatch = useDispatch()
-  let order = Math.random() * 20000;
-  order = Math.floor(order + 1);
+const PurchaseCompleted = ({ setShow, requestId }: PurchaseCompletedProps) => {
 
   const purchaseCompleted = () => {
-    dispatch(clear())
     setShow('list')
   }
 
   return (
     <SideBarFormComp>
-      <SideBarTitleComp>Pedido realizado - {order}</SideBarTitleComp>
+      <SideBarTitleComp>Pedido realizado - {requestId}</SideBarTitleComp>
 
       <TextComp>
         Estamos felizes em informar que seu pedido já está em processo de

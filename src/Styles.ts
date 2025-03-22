@@ -5,7 +5,9 @@ export const colors = {
   lightPink: '#FFEBD9',
   white: '#FFFFFF',
   whiteTow: '#FFF8F2',
-  shadow: 'rgba(0, 0, 0, 0.69)'
+  shadow: 'rgba(0, 0, 0, 0.69)',
+  error: '#ff',
+  black: '#000'
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -23,6 +25,30 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
 
+  @media (max-width: 1200px) {
+    .container {
+      max-width: 950px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      max-width: 576px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .container {
+      max-width: 310px;
+    }
+  }
+
   .content {
     background-color: ${colors.whiteTow};
   }
@@ -30,7 +56,10 @@ const GlobalStyle = createGlobalStyle`
   .btnCloseAside {
     margin-top: 8px;
 
-    @media (min-width: 576px) {
+  }
+
+  @media (min-width: 576px) {
+    .btnCloseAside {
       display: none;
     }
   }
@@ -105,7 +134,7 @@ export const SideBarLabelComp = styled.label`
   margin: 8px 0;
 `
 
-export const SideBarFormComp = styled.form`
+export const SideBarFormComp = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -131,7 +160,8 @@ export const SideBarFormComp = styled.form`
     border: 1px solid transparent;
 
     &.input-error {
-      border-color: #f00;
+      background-color: rgb(255, 125, 32);
+      border-color: ${colors.black};
     }
 
   }

@@ -11,11 +11,7 @@ import { TextDescription, TitleComp } from '../../Styles'
 import * as S from './Styles'
 import { useEffect } from 'react'
 
-type Props = {
-  setShowDish: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const MenuDialog = ({ setShowDish }: Props) => {
+const MenuDialog = ({ setShowDish }: MenuDialogProps) => {
   const {
     name: dishName,
     image: dishImage,

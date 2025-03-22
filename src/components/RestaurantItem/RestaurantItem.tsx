@@ -1,4 +1,3 @@
-import Restautante from '../../model/Restaurant'
 import ImgStars from '../../assets/icons/estrela.png'
 import { useEffect } from 'react'
 import AOS from 'aos'
@@ -7,12 +6,7 @@ import 'aos/dist/aos.css'
 import { EmphasisComp, TextComp, TitleComp } from '../../Styles'
 import * as S from './Styles'
 
-type RestaurantProps = {
-  restaurant: Restautante
-}
-
-
-const RestaurantItem = ({ restaurant }: RestaurantProps) => {
+const RestaurantItem = ({ restaurant }: RestaurantItemProps) => {
   const { id, avaliacao, capa, descricao, destacado, titulo, tipo } = restaurant
 
   useEffect(() => {

@@ -8,13 +8,13 @@ export const ListComp = styled.ul`
   row-gap: 48px;
   justify-items: center;
 
-  @media (max-width: 992px) {
+  @media (max-width: 1024px) {
     grid-template-columns: 1fr 1fr;
-    column-gap: 10px;
-    row-gap: 12px;
+    /* column-gap: 10px;
+    row-gap: 12px; */
   }
 
-  @media (max-width: 630px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
     padding: 40px 5px 60px 5px;
   }

@@ -25,6 +25,10 @@ export const ListComp = styled.ul`
     cursor: pointer;
   }
 
+  .carrinhoIcon {
+    display: none;
+  }
+
   @media (max-width: 768px) {
     grid-template-columns: none;
     grid-template-areas: 
@@ -43,9 +47,16 @@ export const ListComp = styled.ul`
       grid-area: logo;
     }
 
-    .carrinho {
+    .carrinhoText {
+      display: none;
+    }
+
+    .carrinhoIcon {
       grid-area: carrinho;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      font-size: 32px;
+      color: ${colors.pink};
     }
   }
 `

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router'
+import { FaCartShopping } from 'react-icons/fa6'
 
 import { RootReducer } from '../../store/store'
 import { changeShow } from '../../store/reducers/Cart'
@@ -10,14 +11,14 @@ import ImageBackgroundBase from '../../assets/images/fundoRosa.svg'
 import * as S from './Styles'
 
 const Header = () => {
-  const pagePath = useLocation().pathname === '/' ? true : false  
+  const pagePath = useLocation().pathname === '/' ? true : false
   const cart = useSelector((state: RootReducer) => state.cart.items)
   const dispatch = useDispatch()
 
   return (
     <S.HeaderComp style={{ backgroundImage: `url(${ImageBackgroundBase})` }}>
       <S.ListComp className="container">
-        <S.LinksItemComp className='linkRestaurante'>
+        <S.LinksItemComp className="linkRestaurante">
           {!pagePath && (
             <Link to="/" className="links">
               Restaurantes
@@ -25,16 +26,24 @@ const Header = () => {
           )}
         </S.LinksItemComp>
 
-        <S.LogoItemComp className='logo'>
+        <S.LogoItemComp className="logo">
           <Link to="/">
             <LogoComp src={Logo} alt="Logo da eFood" />
           </Link>
         </S.LogoItemComp>
 
         {!pagePath && (
-          <S.CartItemComp className="links carrinho" onClick={() => dispatch(changeShow(true))}>
-            {cart.length} produto(s) no carrinho
-          </S.CartItemComp>
+          <>
+            <S.CartItemComp
+              className="links carrinhoText"
+              onClick={() => dispatch(changeShow(true))}
+            >
+              {cart.length} produto(s) no carrinho
+            </S.CartItemComp>
+            <div className="carrinhoIcon">
+              <FaCartShopping onClick={() => dispatch(changeShow(true))}/>
+            </div>
+          </>
         )}
       </S.ListComp>
       {pagePath && (

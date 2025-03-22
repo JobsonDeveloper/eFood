@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import { RootReducer } from '../../store/store'
 
 import * as S from './Styles'
+import { DotLoader } from 'react-spinners'
+import { colors } from '../../Styles'
 
 const Loading = () => {
   const { value } = useSelector((state: RootReducer) => state.loading)
@@ -11,11 +13,7 @@ const Loading = () => {
     <>
       {value === true && (
         <S.LoadingContainerComp>
-          <S.LoadingComp>
-            <li></li>
-            <li></li>
-            <li></li>
-          </S.LoadingComp>
+          <DotLoader color={colors.pink}/>
         </S.LoadingContainerComp>
       )}
     </>

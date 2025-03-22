@@ -9,11 +9,7 @@ import { formatPrice } from '../../utils/utils'
 import { ButtonMenuComp, SideBarTitleComp } from '../../Styles'
 import * as S from './Styles'
 
-type Props = {
-  setShow: Dispatch<SetStateAction<string>>
-}
-
-const CartList = ({ setShow }: Props) => {
+const CartList = ({ setShow }: CartListProps) => {
   const { items } = useSelector((state: RootReducer) => state.cart)
   const [allValue, setAllValue] = useState('')
   const dispatch = useDispatch()
@@ -57,7 +53,7 @@ const CartList = ({ setShow }: Props) => {
             />
           ))
         ) : (
-          <S.CartDescriptionComp>Sem items no carrinho</S.CartDescriptionComp>
+          <S.CartDescriptionComp>Sem produtos no carrinho</S.CartDescriptionComp>
         )}
       </S.CartListComp>
 

@@ -12,12 +12,13 @@ export const CartItemComp = styled.li`
   }
 `
 
-export const CartImageComp = styled.div`
+export const CartImageComp = styled.img`
   width: 80px;
   height: 80px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  object-fit: cover;
 `
 
 export const CartDataComp = styled.div`

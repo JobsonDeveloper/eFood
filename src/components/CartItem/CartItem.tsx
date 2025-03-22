@@ -9,15 +9,7 @@ import 'aos/dist/aos.css'
 import { TitleComp } from '../../Styles'
 import * as S from './Styles'
 
-type Props = {
-  id: number
-  name: string
-  image: string
-  value: number
-  delay: number
-}
-
-const CartItem = ({ id: prodId, name: prodName, image: prodImage, value: prodValue, delay }: Props) => {
+const CartItem = ({ id: prodId, name: prodName, image: prodImage, value: prodValue, delay }: CartItemProps) => {
   const valueDishString = `${prodValue.toFixed(2)}`
   const showValue = valueDishString.replace('.', ',')
   const dispatch = useDispatch()
@@ -40,7 +32,7 @@ const CartItem = ({ id: prodId, name: prodName, image: prodImage, value: prodVal
 
   return (
     <S.CartItemComp data-aos="fade-left" data-aos-delay={delay}>
-      <S.CartImageComp style={{ backgroundImage: `url(${prodImage})` }} />
+      <S.CartImageComp src={prodImage} />
 
       <S.CartDataComp>
         <TitleComp fontWeight="900">{prodName}</TitleComp>

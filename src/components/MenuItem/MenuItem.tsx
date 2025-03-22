@@ -9,12 +9,7 @@ import 'aos/dist/aos.css'
 import { ButtonMenuComp, TextDescription, TitleComp } from '../../Styles'
 import * as S from './Styles'
 
-type Props = {
-  menu: Menu
-  setShowDish:  Dispatch<SetStateAction<boolean>>
-}
-
-const MenuItem = ({ menu, setShowDish }: Props) => {
+const MenuItem = ({ menu, setShowDish }: MenuItemProps) => {
   const { id, foto, nome, descricao, porcao, preco } = menu
   const dispatch = useDispatch()
 
