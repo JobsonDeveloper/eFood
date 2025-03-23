@@ -6,10 +6,10 @@
 ### Lista completa:
 Vite | React | React Router | React Hooks | React Icons | React Spinners | React Input Mask | Redux | API | AOS - Animate On Scroll Library | Yup | Formik | TypeScript | Styled-Components | Prettier | Git | Figma | Vercel | POO - Programação Orientada a Objetos
 
-Site de divulgação de restaurantes, bem como seus cardápios, possibilitando também uma estrutura para a implementação da compra de produtos através do site.
+Site de divulgação de restaurantes, bem como seus cardápios, onde um cliente pode escolher o prato do seu restaurante preferito e efetuar a compra do produto de forma fácil e rápida.
 Todo o gerenciamento de estado dos dados utilizados globalmente estão sendo gerenciados através do Redux, os estados dos componentes locais são gerenciados pelo useState.
 Por meio do React Router foi possível criar a renderização de componentes específicos, de acordo com a URL do site, dando ao usuário a opção de navegar pelo site e experenciar os conteúdos disponíveis.
-A lista de restaurantes e a lista de pratos dos cardápios são Arrays de Objetos, sendo manipuladas para gerar os componentes e renderiza-los na interface do usuário.
+A lista de restaurantes e a lista de pratos dos cardápios são obtidas via API, fornecida pela EBAC, sendo manipuladas para gerar os componentes e renderiza-los na interface do usuário.
 
 ### Página inicial
 ![image](https://github.com/user-attachments/assets/11cebeee-e803-409f-9de2-b6c0078b483a)
