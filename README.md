@@ -1,10 +1,10 @@
 [Veja o site](https://efood-three-omega.vercel.app/)
 
 ### Ferramentas utiliizadas:
-[![My Skills](https://skillicons.dev/icons?i=vite,html,ts,react,redux,styledcomponents,figma,git,vercel)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=vite,react,redux,ts,styledcomponents,git,figma,vercel)](https://skillicons.dev)
 
 ### Lista completa:
-Vite | HTML | TypeScript | React | Redux | React Hooks | React Router | Styled-components | Prettier | ESLint | Figma | Git | Vercel | POO - Programação Orientada a Objetos
+Vite | React | React Router | React Hooks | React Icons | React Spinners | React Input Mask | Redux | API | AOS - Animate On Scroll Library | Yup | Formik | TypeScript | Styled-Components | Prettier | Git | GitHub | Figma | Vercel | POO - Programação Orientada a Objetos
 
 Site de divulgação de restaurantes, bem como seus cardápios, possibilitando também uma estrutura para a implementação da compra de produtos através do site.
 Todo o gerenciamento de estado dos dados utilizados globalmente estão sendo gerenciados através do Redux, os estados dos componentes locais são gerenciados pelo useState.
